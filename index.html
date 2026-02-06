@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flare Lighting - Case Study</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Google Fonts - Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS VARIABLES & BRAND COLORS
+           ============================================ */
+        :root {
+            /* Brand Colors */
+            --orange: #ed7102;
+            --orange-light: #ff8c2a;
+            --orange-dark: #c55f00;
+            --dark-teal: #31617f;
+            --dark-teal-light: #4a7a98;
+            --dark-teal-dark: #1e4a5f;
+
+            /* Neutrals */
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --mid-gray: #6c757d;
+            --dark-gray: #343a40;
+            --black: #1a1a1a;
+
+            /* Typography */
+            --font-family: 'Cairo', sans-serif;
+
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.4s ease;
+            --transition-slow: 0.6s ease;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ============================================
+           RESET & BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-family);
+            line-height: 1.2;
+            color: var(--dark-teal);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .text-orange { color: var(--orange); }
+        .text-teal { color: var(--dark-teal); }
+        .text-white { color: var(--white); }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            right: var(--spacing-md);
+            bottom: var(--spacing-md);
+            width: 48px;
+            height: 48px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-medium);
+            z-index: 998;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--orange);
+            transform: translateY(-4px);
+        }
+
+        .back-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ============================================
+           MAIN CONTENT AREA
+           ============================================ */
+        .main-content {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* ============================================
+           SECTION BASE STYLES
+           ============================================ */
+        .section {
+            min-height: 100vh;
+            padding: var(--spacing-xl) var(--spacing-lg);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        /* ============================================
+           COVER PAGE / HERO SECTION
+           ============================================ */
+        .cover-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        /* Orange gradient overlay */
+        .cover-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(237, 113, 2, 0.3) 0%,
+                rgba(237, 113, 2, 0.1) 30%,
+                transparent 60%
+            );
+            z-index: 1;
+        }
+
+        /* Decorative elements */
+        .cover-decoration {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .cover-decoration-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(237, 113, 2, 0.2) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .cover-decoration-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(49, 97, 127, 0.08) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        .cover-decoration-3 {
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(to bottom, var(--orange), transparent);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: var(--spacing-lg);
+            max-width: 900px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(237, 113, 2, 0.2);
+            border: 1px solid rgba(237, 113, 2, 0.4);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: var(--spacing-md);
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .cover-title {
+            color: var(--black);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .cover-title .highlight {
+            color: var(--black);
+            position: relative;
+        }
+
+        .cover-tagline {
+            color: var(--black);
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--orange);
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 2px;
+            animation: expandWidth 0.8s ease 0.6s forwards;
+            transform: scaleX(0);
+        }
+
+        .cover-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            animation: fadeInUp 0.8s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--mid-gray);
+            margin-bottom: 0.25rem;
+        }
+
+        .cover-meta-value {
+            color: var(--black);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cover-scroll-indicator {
+            position: absolute;
+            bottom: var(--spacing-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .cover-scroll-indicator span {
+            color: var(--mid-gray);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cover-scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            color: var(--orange);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes expandWidth {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ============================================
+           PLACEHOLDER SECTIONS
+           ============================================ */
+        .placeholder-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--off-white);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .placeholder-section:nth-child(even) {
+            background: var(--white);
+        }
+
+        .placeholder-content {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .placeholder-number {
+            font-size: 6rem;
+            font-weight: 800;
+            color: var(--light-gray);
+            line-height: 1;
+        }
+
+        .placeholder-title {
+            font-size: 1.5rem;
+            color: var(--mid-gray);
+            margin-top: var(--spacing-sm);
+        }
+
+        /* ============================================
+           LIGHTBOX
+           ============================================ */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-medium);
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .lightbox-close:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            .back-to-top,
+            .cover-scroll-indicator {
+                display: none !important;
+            }
+
+            .section {
+                page-break-after: always;
+                min-height: auto;
+                padding: 2rem;
+            }
+
+            .cover-section {
+                background: var(--dark-teal) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 1024px) {
+            .section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .cover-meta {
+                gap: var(--spacing-md);
+            }
+
+            .cover-content {
+                padding: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-title {
+                font-size: 2.5rem;
+            }
+
+            .cover-tagline {
+                font-size: 1.125rem;
+            }
+
+            .cover-meta {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        /* ============================================
+           EXECUTIVE SUMMARY SECTION
+           ============================================ */
+        .executive-section {
+            background: var(--white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .executive-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .executive-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .executive-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .executive-label::before,
+        .executive-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .executive-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .executive-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Project Overview Card */
+        .overview-card {
+            background: var(--off-white);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border-left: 4px solid var(--orange);
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .overview-card p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+
+        /* Goals & Objectives Grid */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .goal-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+        }
+
+        .goal-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .goal-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--white);
+        }
+
+        .goal-card h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .goal-card p {
+            font-size: 0.9375rem;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+
+        /* Target Audience Section */
+        .audience-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .audience-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .audience-section h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .audience-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--dark-teal));
+        }
+
+        .audience-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(237, 113, 2, 0.1);
+            color: var(--orange);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 4px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .audience-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .audience-card p {
+            font-size: 0.9375rem;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+
+        /* Key Features Section */
+        .features-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .features-section h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: var(--spacing-sm);
+            background: var(--off-white);
+            border-radius: 8px;
+        }
+
+        .feature-check {
+            width: 24px;
+            height: 24px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-check svg {
+            width: 14px;
+            height: 14px;
+            color: var(--white);
+        }
+
+        .feature-item span {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .executive-section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .overview-card {
+                padding: var(--spacing-md);
+            }
+
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           SITEMAP SECTION
+           ============================================ */
+        .sitemap-section {
+            background: var(--off-white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sitemap-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sitemap-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .sitemap-label::before,
+        .sitemap-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .sitemap-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .sitemap-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-md);
+        }
+
+        /* Legend */
+        .sitemap-legend {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--dark-gray);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.primary {
+            background: var(--orange);
+        }
+
+        .legend-dot.utility {
+            background: var(--mid-gray);
+        }
+
+        /* Sitemap Tree */
+        .sitemap-tree {
+            background: var(--white);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            border: 1px solid var(--light-gray);
+        }
+
+        /* Root node (Homepage) */
+        .sitemap-root {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sitemap-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .sitemap-node.primary {
+            border-color: var(--orange);
+            border-left: 4px solid var(--orange);
+        }
+
+        .sitemap-node.secondary {
+            border-color: var(--dark-teal);
+            border-left: 4px solid var(--dark-teal);
+        }
+
+        .sitemap-node.utility {
+            border-color: var(--mid-gray);
+            border-left: 4px solid var(--mid-gray);
+        }
+
+        .sitemap-node.root {
+            background: var(--orange);
+            border-color: var(--orange);
+            color: var(--white);
+        }
+
+        .sitemap-node.root .node-title {
+            color: var(--white);
+        }
+
+        .sitemap-node.root .node-desc {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .node-title {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .node-desc {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+        }
+
+        /* Connector lines */
+        .sitemap-connector {
+            width: 2px;
+            height: 24px;
+            background: var(--light-gray);
+        }
+
+        .sitemap-connector.orange {
+            background: var(--orange);
+        }
+
+        /* Level containers */
+        .sitemap-level {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            position: relative;
+            padding-top: var(--spacing-md);
+        }
+
+        .sitemap-level::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: var(--light-gray);
+        }
+
+        /* Branch container */
+        .sitemap-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sitemap-branch .sitemap-connector {
+            height: 16px;
+        }
+
+        /* Sub-level */
+        .sitemap-sublevel {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: var(--spacing-sm);
+        }
+
+        .sitemap-sublevel .sitemap-node {
+            min-width: 120px;
+            padding: 0.75rem 1rem;
+        }
+
+        .sitemap-sublevel .node-title {
+            font-size: 0.8125rem;
+        }
+
+        .sitemap-sublevel .node-desc {
+            font-size: 0.6875rem;
+        }
+
+        /* Sub-branch connector */
+        .sub-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sub-connector .sitemap-connector {
+            height: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .sitemap-section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .sitemap-tree {
+                padding: var(--spacing-md);
+            }
+
+            .sitemap-level {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-md);
+            }
+
+            .sitemap-level::before {
+                display: none;
+            }
+
+            .sitemap-node {
+                min-width: 200px;
+            }
+
+            .sitemap-sublevel {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sitemap-sublevel .sitemap-node {
+                min-width: 180px;
+            }
+
+            .sitemap-legend {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+        }
+
+        /* ============================================
+           BRAND FOUNDATION SECTION
+           ============================================ */
+        .brand-section {
+            background: var(--white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .brand-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .brand-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .brand-label::before,
+        .brand-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .brand-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .brand-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Color Palette */
+        .color-palette {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .color-palette h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .color-palette h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .color-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .color-swatch {
+            height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: var(--spacing-sm);
+        }
+
+        .color-swatch.orange {
+            background: var(--orange);
+        }
+
+        .color-swatch.dark-teal {
+            background: var(--dark-teal);
+        }
+
+        .color-swatch.black {
+            background: var(--black);
+        }
+
+        .color-swatch.white-swatch {
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .color-swatch.off-white {
+            background: var(--off-white);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .color-swatch.mid-gray {
+            background: var(--mid-gray);
+        }
+
+        .color-info {
+            padding: var(--spacing-md);
+        }
+
+        .color-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .color-hex {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--mid-gray);
+            font-family: monospace;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .color-usage {
+            font-size: 0.875rem;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .color-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .color-badge.primary-badge {
+            color: var(--orange);
+        }
+
+        .color-badge.secondary-badge {
+            color: var(--dark-teal);
+        }
+
+        .color-badge.neutral-badge {
+            color: var(--dark-gray);
+        }
+
+        /* Typography System */
+        .typography-system {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .typography-system h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .typography-system h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .type-showcase {
+            background: var(--off-white);
+            border-radius: 16px;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .type-row {
+            display: flex;
+            align-items: baseline;
+            gap: var(--spacing-md);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .type-row:last-child {
+            border-bottom: none;
+        }
+
+        .type-label {
+            flex-shrink: 0;
+            width: 140px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid-gray);
+        }
+
+        .type-sample {
+            flex: 1;
+            color: var(--black);
+        }
+
+        .type-sample.h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .type-sample.h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .type-sample.h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .type-sample.h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .type-sample.body {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .type-sample.body-small {
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .type-sample.caption {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mid-gray);
+        }
+
+        .type-meta {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        .font-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .font-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .font-preview {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--black);
+        }
+
+        .font-preview.regular { font-weight: 400; }
+        .font-preview.bold { font-weight: 700; }
+        .font-preview.extrabold { font-weight: 800; }
+        .font-preview.black-weight { font-weight: 900; }
+
+        .font-weight-name {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .font-weight-value {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            font-family: monospace;
+        }
+
+        /* Logo Usage */
+        .logo-usage {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .logo-usage h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-usage h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .logo-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .logo-preview {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-md);
+        }
+
+        .logo-preview.light-bg {
+            background: var(--off-white);
+        }
+
+        .logo-preview.dark-bg {
+            background: var(--black);
+        }
+
+        .logo-preview.orange-bg {
+            background: var(--orange);
+        }
+
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text.dark {
+            color: var(--black);
+        }
+
+        .logo-text.light {
+            color: var(--white);
+        }
+
+        .logo-text .logo-accent {
+            color: var(--orange);
+        }
+
+        .logo-text.light .logo-accent {
+            color: var(--white);
+        }
+
+        .logo-description {
+            padding: var(--spacing-md);
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .logo-variant {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-context {
+            font-size: 0.875rem;
+            color: var(--mid-gray);
+        }
+
+        /* Brand Voice */
+        .brand-voice {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .brand-voice h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-voice h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .voice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .voice-card {
+            background: var(--off-white);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+        }
+
+        .voice-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--orange);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .voice-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--white);
+        }
+
+        .voice-card h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .voice-card p {
+            font-size: 0.9375rem;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+
+        /* Visual Elements */
+        .visual-elements h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .visual-elements h3::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .element-card {
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .element-preview {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--off-white);
+            padding: var(--spacing-md);
+        }
+
+        .pattern-lines {
+            display: flex;
+            gap: 8px;
+        }
+
+        .pattern-line {
+            width: 4px;
+            height: 60px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .pattern-line:nth-child(2) {
+            height: 80px;
+            background: var(--dark-teal);
+        }
+
+        .pattern-line:nth-child(3) {
+            height: 50px;
+        }
+
+        .pattern-line:nth-child(4) {
+            height: 70px;
+            background: var(--dark-teal);
+        }
+
+        .pattern-line:nth-child(5) {
+            height: 40px;
+        }
+
+        .gradient-preview {
+            width: 100%;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--dark-teal) 100%);
+        }
+
+        .shape-preview {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: center;
+        }
+
+        .shape-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--orange);
+        }
+
+        .shape-square {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: var(--dark-teal);
+        }
+
+        .shape-rectangle {
+            width: 80px;
+            height: 50px;
+            border-radius: 8px;
+            background: var(--light-gray);
+        }
+
+        /* Cursor Dot Follower Element */
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--off-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            color: var(--mid-gray);
+        }
+
+        .video-placeholder svg {
+            opacity: 0.5;
+        }
+
+        .video-placeholder span {
+            font-size: 0.875rem;
+        }
+
+        .cursor-dot-card .element-preview {
+            padding: 0;
+        }
+
+        .cursor-dot-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .element-info {
+            padding: var(--spacing-md);
+        }
+
+        .element-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .element-desc {
+            font-size: 0.875rem;
+            color: var(--mid-gray);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .brand-section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .type-row {
+                flex-direction: column;
+                gap: var(--spacing-xs);
+            }
+
+            .type-label {
+                width: auto;
+            }
+
+            .font-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ============================================
+             COVER PAGE
+             ============================================ -->
+        <section class="cover-section section" id="cover">
+            <!-- Decorative Elements -->
+            <div class="cover-decoration cover-decoration-1"></div>
+            <div class="cover-decoration cover-decoration-2"></div>
+            <div class="cover-decoration cover-decoration-3"></div>
+
+            <!-- Cover Content -->
+            <div class="cover-content">
+                <div class="cover-badge">Website Case Study</div>
+                <h1 class="cover-title">FLARE <span class="highlight">LIGHTING</span></h1>
+                <p class="cover-tagline">Walk in the Light</p>
+                <div class="cover-divider"></div>
+
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Client</div>
+                        <div class="cover-meta-value">Flare Lighting Co.</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Date</div>
+                        <div class="cover-meta-value">February 2026</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="cover-meta-label">Designed By</div>
+                        <div class="cover-meta-value">Adham Shams</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="cover-scroll-indicator">
+                <span>Scroll to explore</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 01: EXECUTIVE SUMMARY
+             ============================================ -->
+        <section class="executive-section section" id="overview">
+            <div class="executive-container">
+                <!-- Section Header -->
+                <div class="executive-header">
+                    <div class="executive-label">Section 01</div>
+                    <h2 class="executive-title">Executive Summary</h2>
+                    <p class="executive-subtitle">A comprehensive overview of the Flare Lighting website vision, strategy, and objectives.</p>
+                </div>
+
+                <!-- Project Overview -->
+                <div class="overview-card">
+                    <h3>Project Overview</h3>
+                    <p>Flare Lighting is a premium lighting solutions company committed to quality, consistency, and style. This website project aims to create a modern, businesslike digital presence that reflects the brand's commitment to excellence and serves as a powerful tool for connecting with A and A+ class premium customers and businesses. The website will embody the brand's core message — "Walk in the Light" — through sophisticated design, intuitive navigation, and compelling content that showcases Flare Lighting's comprehensive product range and industry expertise.</p>
+                </div>
+
+                <!-- Goals & Objectives -->
+                <div class="goals-grid">
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h4>Establish Premium Presence</h4>
+                        <p>Create a sophisticated digital experience that positions Flare Lighting as a leader in the premium lighting industry, appealing to discerning A and A+ class clientele.</p>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h4>Attract Quality Leads</h4>
+                        <p>Generate high-value business inquiries from premium customers and B2B partners seeking professional lighting solutions for commercial and residential projects.</p>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18M9 21V9"/>
+                            </svg>
+                        </div>
+                        <h4>Showcase Product Excellence</h4>
+                        <p>Present the complete product catalog with high-quality imagery and detailed specifications that demonstrate superior craftsmanship and innovation.</p>
+                    </div>
+
+                    <div class="goal-card">
+                        <div class="goal-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h4>Build Brand Authority</h4>
+                        <p>Establish Flare Lighting as an industry authority through content, case studies, and project showcases that highlight expertise and successful implementations.</p>
+                    </div>
+                </div>
+
+                <!-- Target Audience -->
+                <div class="audience-section">
+                    <h3>Target Audience</h3>
+                    <div class="audience-cards">
+                        <div class="audience-card">
+                            <div class="audience-badge">Primary</div>
+                            <h4>Premium Residential Clients</h4>
+                            <p>High-net-worth homeowners and interior designers seeking luxury lighting solutions for upscale residential projects, villas, and premium apartments.</p>
+                        </div>
+
+                        <div class="audience-card">
+                            <div class="audience-badge">Primary</div>
+                            <h4>Commercial & Corporate</h4>
+                            <p>Business owners, facility managers, and corporate procurement teams requiring professional lighting for offices, retail spaces, hotels, and commercial developments.</p>
+                        </div>
+
+                        <div class="audience-card">
+                            <div class="audience-badge">Secondary</div>
+                            <h4>Architects & Consultants</h4>
+                            <p>Architecture firms, lighting consultants, and engineering companies specifying lighting solutions for large-scale projects and developments.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Features -->
+                <div class="features-section">
+                    <h3>Key Website Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Modern design with premium aesthetic</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Comprehensive product catalog with filtering</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>High-quality imagery with desaturated color photography</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Project portfolio & case studies showcase</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>SEO-optimized content and structure</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Responsive design for all devices</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Quote request & contact forms</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <span>Technical specifications & downloads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 02: SITEMAP OVERVIEW
+             ============================================ -->
+        <section class="sitemap-section section" id="sitemap">
+            <div class="sitemap-container">
+                <!-- Section Header -->
+                <div class="sitemap-header">
+                    <div class="sitemap-label">Section 02</div>
+                    <h2 class="sitemap-title">Sitemap Overview</h2>
+                    <p class="sitemap-subtitle">Visual hierarchy of all website pages and their relationships.</p>
+
+                    <!-- Legend -->
+                    <div class="sitemap-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot primary"></div>
+                            <span>Primary Pages</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot utility"></div>
+                            <span>Utility Pages</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sitemap Tree -->
+                <div class="sitemap-tree">
+                    <div class="sitemap-root">
+                        <!-- Homepage (Root) -->
+                        <div class="sitemap-node root">
+                            <span class="node-title">Homepage</span>
+                            <span class="node-desc">Main landing page</span>
+                        </div>
+
+                        <div class="sitemap-connector orange"></div>
+
+                        <!-- Level 1: Main Pages -->
+                        <div class="sitemap-level">
+                            <!-- About Branch -->
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node primary">
+                                    <span class="node-title">About Us</span>
+                                    <span class="node-desc">Company story</span>
+                                </div>
+                            </div>
+
+                            <!-- Products Branch -->
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node primary">
+                                    <span class="node-title">Products</span>
+                                    <span class="node-desc">Full catalog</span>
+                                </div>
+                            </div>
+
+                            <!-- Projects Branch -->
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node primary">
+                                    <span class="node-title">Projects</span>
+                                    <span class="node-desc">Portfolio showcase</span>
+                                </div>
+                            </div>
+
+                            <!-- Business Partners Branch -->
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node primary">
+                                    <span class="node-title">Business Partners</span>
+                                    <span class="node-desc">Partners showcase</span>
+                                </div>
+                            </div>
+
+                            <!-- Contact Branch -->
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node primary">
+                                    <span class="node-title">Contact</span>
+                                    <span class="node-desc">Get in touch</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Utility Pages Row -->
+                        <div class="sitemap-level" style="margin-top: var(--spacing-lg);">
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node utility">
+                                    <span class="node-title">Privacy Policy</span>
+                                    <span class="node-desc">Legal</span>
+                                </div>
+                            </div>
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node utility">
+                                    <span class="node-title">Terms of Service</span>
+                                    <span class="node-desc">Legal</span>
+                                </div>
+                            </div>
+                            <div class="sitemap-branch">
+                                <div class="sitemap-node utility">
+                                    <span class="node-title">FAQ</span>
+                                    <span class="node-desc">Support</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 03: BRAND FOUNDATION
+             ============================================ -->
+        <section class="brand-section section" id="brand">
+            <div class="brand-container">
+                <!-- Section Header -->
+                <div class="brand-header">
+                    <div class="brand-label">Section 03</div>
+                    <h2 class="brand-title">Brand Foundation</h2>
+                    <p class="brand-subtitle">The visual identity system that defines Flare Lighting's digital presence.</p>
+                </div>
+
+                <!-- Color Palette -->
+                <div class="color-palette">
+                    <h3>Color Palette</h3>
+                    <div class="color-grid">
+                        <div class="color-card">
+                            <div class="color-swatch orange">
+                                <span class="color-badge primary-badge">Primary</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Flare Orange</div>
+                                <div class="color-hex">#ED7102</div>
+                                <div class="color-usage">Primary brand color. Use for CTAs, icons, highlights, and key UI elements. Represents energy, warmth, and innovation.</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card">
+                            <div class="color-swatch dark-teal">
+                                <span class="color-badge secondary-badge">Secondary</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Dark Teal</div>
+                                <div class="color-hex">#31617F</div>
+                                <div class="color-usage">Secondary accent color. Use for supporting elements, hover states, and contrast. Represents trust, stability, and professionalism.</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card">
+                            <div class="color-swatch black">
+                                <span class="color-badge neutral-badge" style="color: var(--white); background: rgba(255,255,255,0.2);">Neutral</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Rich Black</div>
+                                <div class="color-hex">#1A1A1A</div>
+                                <div class="color-usage">Primary text color and dark backgrounds. Use for headings, body text, and high-contrast sections.</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card">
+                            <div class="color-swatch white-swatch">
+                                <span class="color-badge neutral-badge">Neutral</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Pure White</div>
+                                <div class="color-hex">#FFFFFF</div>
+                                <div class="color-usage">Primary background color. Creates clean, spacious layouts that let content breathe and products shine.</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card">
+                            <div class="color-swatch off-white">
+                                <span class="color-badge neutral-badge">Neutral</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Off White</div>
+                                <div class="color-hex">#F8F9FA</div>
+                                <div class="color-usage">Secondary background for cards, sections, and subtle separation. Adds depth without visual noise.</div>
+                            </div>
+                        </div>
+
+                        <div class="color-card">
+                            <div class="color-swatch mid-gray">
+                                <span class="color-badge neutral-badge" style="color: var(--white); background: rgba(255,255,255,0.3);">Neutral</span>
+                            </div>
+                            <div class="color-info">
+                                <div class="color-name">Mid Gray</div>
+                                <div class="color-hex">#6C757D</div>
+                                <div class="color-usage">Secondary text, captions, and muted elements. Use for supporting information and subtle UI components.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography System -->
+                <div class="typography-system">
+                    <h3>Typography System</h3>
+                    <div class="type-showcase">
+                        <div class="type-row">
+                            <div class="type-label">Heading 1</div>
+                            <div class="type-sample h1">Walk in the Light</div>
+                            <div class="type-meta">800 / 3.5rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Heading 2</div>
+                            <div class="type-sample h2">Premium Lighting Solutions</div>
+                            <div class="type-meta">700 / 2.5rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Heading 3</div>
+                            <div class="type-sample h3">Innovative Design Excellence</div>
+                            <div class="type-meta">700 / 1.5rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Heading 4</div>
+                            <div class="type-sample h4">Quality & Consistency</div>
+                            <div class="type-meta">700 / 1.25rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Body Text</div>
+                            <div class="type-sample body">Flare Lighting delivers exceptional illumination solutions that transform spaces with elegance and efficiency.</div>
+                            <div class="type-meta">400 / 1rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Small Text</div>
+                            <div class="type-sample body-small">Technical specifications and product details for professional applications.</div>
+                            <div class="type-meta">400 / 0.875rem</div>
+                        </div>
+                        <div class="type-row">
+                            <div class="type-label">Caption</div>
+                            <div class="type-sample caption">Section Label • Category Tag</div>
+                            <div class="type-meta">600 / 0.75rem</div>
+                        </div>
+                    </div>
+
+                    <div class="font-info">
+                        <div class="font-card">
+                            <div class="font-preview regular">Aa</div>
+                            <div class="font-weight-name">Cairo Regular</div>
+                            <div class="font-weight-value">font-weight: 400</div>
+                        </div>
+                        <div class="font-card">
+                            <div class="font-preview bold">Aa</div>
+                            <div class="font-weight-name">Cairo Bold</div>
+                            <div class="font-weight-value">font-weight: 700</div>
+                        </div>
+                        <div class="font-card">
+                            <div class="font-preview extrabold">Aa</div>
+                            <div class="font-weight-name">Cairo ExtraBold</div>
+                            <div class="font-weight-value">font-weight: 800</div>
+                        </div>
+                        <div class="font-card">
+                            <div class="font-preview black-weight">Aa</div>
+                            <div class="font-weight-name">Cairo Black</div>
+                            <div class="font-weight-value">font-weight: 900</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo Usage -->
+                <div class="logo-usage">
+                    <h3>Logo Usage & Variations</h3>
+                    <div class="logo-grid">
+                        <div class="logo-card">
+                            <div class="logo-preview light-bg">
+                                <img src="main.webp" alt="Flare Lighting Main Logo" style="max-width: 200px; height: auto;">
+                            </div>
+                            <div class="logo-description">
+                                <div class="logo-variant">Primary Logo</div>
+                                <div class="logo-context">Use on white or light backgrounds. Default for most applications.</div>
+                            </div>
+                        </div>
+
+                        <div class="logo-card">
+                            <div class="logo-preview light-bg">
+                                <img src="black.webp" alt="Flare Lighting Black Logo" style="max-width: 200px; height: auto;">
+                            </div>
+                            <div class="logo-description">
+                                <div class="logo-variant">Black Logo</div>
+                                <div class="logo-context">Monochrome version for single-color applications and print materials.</div>
+                            </div>
+                        </div>
+
+                        <div class="logo-card">
+                            <div class="logo-preview dark-bg">
+                                <img src="white.webp" alt="Flare Lighting White Logo" style="max-width: 200px; height: auto;">
+                            </div>
+                            <div class="logo-description">
+                                <div class="logo-variant">White Logo</div>
+                                <div class="logo-context">Use on dark backgrounds. Maintains brand recognition in dark contexts.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Voice -->
+                <div class="brand-voice">
+                    <h3>Brand Voice & Tone</h3>
+                    <div class="voice-grid">
+                        <div class="voice-card">
+                            <div class="voice-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h4>Professional</h4>
+                            <p>Communicate with authority and expertise. Use precise, industry-appropriate language that builds trust with premium clients.</p>
+                        </div>
+
+                        <div class="voice-card">
+                            <div class="voice-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                                    <line x1="9" y1="9" x2="9.01" y2="9"/>
+                                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                                </svg>
+                            </div>
+                            <h4>Approachable</h4>
+                            <p>Balance professionalism with warmth. Make technical information accessible while maintaining a welcoming presence.</p>
+                        </div>
+
+                        <div class="voice-card">
+                            <div class="voice-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <h4>Premium</h4>
+                            <p>Emphasize quality and excellence. Every word should reinforce the brand's commitment to superior products and service.</p>
+                        </div>
+
+                        <div class="voice-card">
+                            <div class="voice-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                            </div>
+                            <h4>Innovative</h4>
+                            <p>Highlight forward-thinking solutions. Position Flare Lighting as a leader in lighting technology and design innovation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Elements -->
+                <div class="visual-elements">
+                    <h3>Key Visual Elements</h3>
+                    <div class="elements-grid">
+                        <div class="element-card">
+                            <div class="element-preview">
+                                <div class="pattern-lines">
+                                    <div class="pattern-line"></div>
+                                    <div class="pattern-line"></div>
+                                    <div class="pattern-line"></div>
+                                    <div class="pattern-line"></div>
+                                    <div class="pattern-line"></div>
+                                </div>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Vertical Lines Pattern</div>
+                                <div class="element-desc">Use subtle vertical lines to create rhythm and visual interest. Represents light rays and precision.</div>
+                            </div>
+                        </div>
+
+                        <div class="element-card">
+                            <div class="element-preview">
+                                <div class="gradient-preview"></div>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Brand Gradient</div>
+                                <div class="element-desc">Orange to Dark Teal gradient for accent elements, dividers, and decorative touches. Use sparingly.</div>
+                            </div>
+                        </div>
+
+                        <div class="element-card cursor-dot-card">
+                            <div class="element-preview">
+                                <video src="cursor.mov" autoplay loop muted playsinline></video>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Cursor Dot Follower</div>
+                                <div class="element-desc">A glowing orange dot follows the cursor throughout the website, symbolizing the guiding light that Flare Lighting brings to every space. This subtle interactive element embodies the brand's promise to illuminate the path forward.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+        </button>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const backToTop = document.getElementById('backToTop');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxContent = document.getElementById('lightboxContent');
+
+        // ============================================
+        // SCROLL HANDLER
+        // ============================================
+        function updateScroll() {
+            const scrollTop = window.scrollY;
+
+            // Show/hide back to top button
+            if (scrollTop > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', updateScroll);
+        updateScroll(); // Initial call
+
+        // ============================================
+        // BACK TO TOP
+        // ============================================
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ============================================
+        // LIGHTBOX
+        // ============================================
+        function openLightbox(content) {
+            lightboxContent.innerHTML = content;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            lightboxContent.innerHTML = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // ============================================
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+
+        // Debounce function for performance
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimized scroll handler
+        const optimizedScrollHandler = debounce(updateScroll, 10);
+        window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+        console.log('FLARE LIGHTING Moodboard initialized');
+    </script>
+</body>
+</html>
