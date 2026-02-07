@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +58,9 @@
         /* ============================================
            RESET & BASE STYLES
            ============================================ */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -80,7 +83,12 @@
         /* ============================================
            TYPOGRAPHY
            ============================================ */
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-family);
             line-height: 1.2;
             color: var(--dark-teal);
@@ -107,9 +115,17 @@
             color: var(--dark-gray);
         }
 
-        .text-orange { color: var(--orange); }
-        .text-teal { color: var(--dark-teal); }
-        .text-white { color: var(--white); }
+        .text-orange {
+            color: var(--orange);
+        }
+
+        .text-teal {
+            color: var(--dark-teal);
+        }
+
+        .text-white {
+            color: var(--white);
+        }
 
         /* Back to Top Button */
         .back-to-top {
@@ -214,12 +230,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(237, 113, 2, 0.3) 0%,
-                rgba(237, 113, 2, 0.1) 30%,
-                transparent 60%
-            );
+            background: linear-gradient(135deg,
+                    rgba(237, 113, 2, 0.3) 0%,
+                    rgba(237, 113, 2, 0.1) 30%,
+                    transparent 60%);
             z-index: 1;
         }
 
@@ -259,8 +273,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .cover-content {
@@ -276,7 +299,7 @@
             padding: 0.5rem 1.5rem;
             background: rgba(237, 113, 2, 0.2);
             border: 1px solid rgba(237, 113, 2, 0.4);
-            border-radius: 50px;
+            border-radius: 0;
             color: var(--orange);
             font-size: 0.875rem;
             font-weight: 700;
@@ -315,7 +338,7 @@
             height: 4px;
             background: var(--orange);
             margin: 0 auto var(--spacing-lg);
-            border-radius: 2px;
+            border-radius: 0;
             animation: expandWidth 0.8s ease 0.6s forwards;
             transform: scaleX(0);
         }
@@ -376,23 +399,49 @@
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes expandWidth {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         /* ============================================
@@ -484,6 +533,7 @@
            PRINT STYLES
            ============================================ */
         @media print {
+
             .back-to-top,
             .cover-scroll-indicator {
                 display: none !important;
@@ -596,7 +646,7 @@
         /* Project Overview Card */
         .overview-card {
             background: var(--off-white);
-            border-radius: 16px;
+            border-radius: 0;
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
             border-left: 4px solid var(--orange);
@@ -626,7 +676,7 @@
         .goal-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             padding: var(--spacing-md);
         }
 
@@ -634,7 +684,7 @@
             width: 56px;
             height: 56px;
             background: var(--orange);
-            border-radius: 12px;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -680,7 +730,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .audience-cards {
@@ -692,7 +742,7 @@
         .audience-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             padding: var(--spacing-md);
             position: relative;
             overflow: hidden;
@@ -717,7 +767,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            border-radius: 4px;
+            border-radius: 0;
             margin-bottom: var(--spacing-sm);
         }
 
@@ -750,7 +800,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .features-grid {
@@ -765,7 +815,7 @@
             gap: 1rem;
             padding: var(--spacing-sm);
             background: var(--off-white);
-            border-radius: 8px;
+            border-radius: 0;
         }
 
         .feature-check {
@@ -897,7 +947,7 @@
         /* Sitemap Tree */
         .sitemap-tree {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: 0;
             padding: var(--spacing-lg);
             border: 1px solid var(--light-gray);
         }
@@ -916,7 +966,7 @@
             padding: 1rem 1.5rem;
             background: var(--white);
             border: 2px solid var(--light-gray);
-            border-radius: 8px;
+            border-radius: 0;
             min-width: 140px;
             text-align: center;
         }
@@ -1150,7 +1200,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .color-grid {
@@ -1162,7 +1212,7 @@
         .color-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             overflow: hidden;
         }
 
@@ -1229,7 +1279,7 @@
             display: inline-block;
             padding: 0.25rem 0.5rem;
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 4px;
+            border-radius: 0;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -1268,12 +1318,12 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .type-showcase {
             background: var(--off-white);
-            border-radius: 16px;
+            border-radius: 0;
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-md);
         }
@@ -1365,7 +1415,7 @@
         .font-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             padding: var(--spacing-md);
             text-align: center;
         }
@@ -1376,10 +1426,21 @@
             color: var(--black);
         }
 
-        .font-preview.regular { font-weight: 400; }
-        .font-preview.bold { font-weight: 700; }
-        .font-preview.extrabold { font-weight: 800; }
-        .font-preview.black-weight { font-weight: 900; }
+        .font-preview.regular {
+            font-weight: 400;
+        }
+
+        .font-preview.bold {
+            font-weight: 700;
+        }
+
+        .font-preview.extrabold {
+            font-weight: 800;
+        }
+
+        .font-preview.black-weight {
+            font-weight: 900;
+        }
 
         .font-weight-name {
             font-size: 0.875rem;
@@ -1414,7 +1475,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .logo-grid {
@@ -1426,7 +1487,7 @@
         .logo-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             overflow: hidden;
         }
 
@@ -1509,7 +1570,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .voice-grid {
@@ -1520,7 +1581,7 @@
 
         .voice-card {
             background: var(--off-white);
-            border-radius: 12px;
+            border-radius: 0;
             padding: var(--spacing-md);
         }
 
@@ -1528,7 +1589,7 @@
             width: 48px;
             height: 48px;
             background: var(--orange);
-            border-radius: 10px;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1570,7 +1631,7 @@
             width: 4px;
             height: 28px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .elements-grid {
@@ -1582,7 +1643,7 @@
         .element-card {
             background: var(--white);
             border: 1px solid var(--light-gray);
-            border-radius: 12px;
+            border-radius: 0;
             overflow: hidden;
         }
 
@@ -1604,7 +1665,7 @@
             width: 4px;
             height: 60px;
             background: var(--orange);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .pattern-line:nth-child(2) {
@@ -1628,8 +1689,34 @@
         .gradient-preview {
             width: 100%;
             height: 60px;
-            border-radius: 8px;
+            border-radius: 0;
             background: linear-gradient(135deg, var(--orange) 0%, var(--dark-teal) 100%);
+        }
+
+        .sharp-edges-preview {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .sharp-shape {
+            background: var(--orange);
+        }
+
+        .sharp-shape.sharp-rect-1 {
+            width: 40px;
+            height: 50px;
+        }
+
+        .sharp-shape.sharp-rect-2 {
+            width: 50px;
+            height: 70px;
+            background: var(--dark-teal);
+        }
+
+        .sharp-shape.sharp-rect-3 {
+            width: 35px;
+            height: 40px;
         }
 
         .shape-preview {
@@ -1648,38 +1735,18 @@
         .shape-square {
             width: 50px;
             height: 50px;
-            border-radius: 8px;
+            border-radius: 0;
             background: var(--dark-teal);
         }
 
         .shape-rectangle {
             width: 80px;
             height: 50px;
-            border-radius: 8px;
+            border-radius: 0;
             background: var(--light-gray);
         }
 
         /* Cursor Dot Follower Element */
-
-        .video-placeholder {
-            width: 100%;
-            height: 100%;
-            background: var(--off-white);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            color: var(--mid-gray);
-        }
-
-        .video-placeholder svg {
-            opacity: 0.5;
-        }
-
-        .video-placeholder span {
-            font-size: 0.875rem;
-        }
 
         .cursor-dot-card .element-preview {
             padding: 0;
@@ -1730,8 +1797,615 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ============================================
+           HOMEPAGE DETAILED BREAKDOWN SECTION
+           ============================================ */
+        .homepage-breakdown-section {
+            background: var(--off-white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .homepage-breakdown-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .homepage-breakdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .homepage-breakdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .homepage-breakdown-label::before,
+        .homepage-breakdown-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .homepage-breakdown-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .homepage-breakdown-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Block */
+        .page-section-block {
+            background: var(--white);
+            border-radius: 0;
+            overflow: hidden;
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--light-gray);
+        }
+
+        .page-section-header {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+            padding: var(--spacing-md) var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .page-section-number {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .page-section-title-group {
+            flex: 1;
+        }
+
+        .page-section-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .page-section-type {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .page-section-content {
+            padding: var(--spacing-lg);
+        }
+
+        /* Strategy Text */
+        .section-strategy {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-strategy h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-strategy h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--orange);
+            border-radius: 0;
+        }
+
+        .section-strategy p {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        /* Video Preview Container */
+        .video-preview-container {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .video-preview-wrapper {
+            position: relative;
+            background: var(--black);
+            border-radius: 0;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-preview-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-caption {
+            margin-top: var(--spacing-sm);
+            font-size: 0.875rem;
+            color: var(--mid-gray);
+        }
+
+        /* Animation Breakdown */
+        .animation-breakdown {
+            background: var(--off-white);
+            border-radius: 0;
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .animation-breakdown h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .animation-breakdown h4 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--orange);
+        }
+
+        .animation-steps {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .animation-step {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 0.25rem;
+        }
+
+        .step-content h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            font-size: 0.9375rem;
+            color: var(--mid-gray);
+            line-height: 1.6;
+        }
+
+        .step-visual {
+            width: 120px;
+            height: 80px;
+            background: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        /* Animation Visual Representations */
+        .step-visual-overlay {
+            width: 100%;
+            height: 100%;
+            background: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .step-visual-reveal {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(to bottom, var(--orange) 30%, var(--light-gray) 30%);
+        }
+
+        .step-visual-reveal::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 20px;
+            background: var(--dark-gray);
+            border-radius: 0;
+        }
+
+        .step-visual-hero {
+            width: 100%;
+            height: 100%;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .step-visual-hero::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 25px;
+            background: var(--dark-gray);
+            border-radius: 0;
+        }
+
+        .step-visual-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 12px;
+            background: var(--orange);
+            border-radius: 0;
+        }
+
+        /* Brand Connection */
+        .brand-connection {
+            background: linear-gradient(135deg, rgba(237, 113, 2, 0.08) 0%, rgba(49, 97, 127, 0.08) 100%);
+            border: 1px solid rgba(237, 113, 2, 0.2);
+            border-radius: 0;
+            padding: var(--spacing-lg);
+        }
+
+        .brand-connection h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-connection h4 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--orange);
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .connection-item {
+            display: flex;
+            gap: var(--spacing-sm);
+            align-items: flex-start;
+        }
+
+        .connection-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--white);
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .connection-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--orange);
+        }
+
+        .connection-text h5 {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 0.25rem;
+        }
+
+        .connection-text p {
+            font-size: 0.875rem;
+            color: var(--mid-gray);
+            line-height: 1.5;
+        }
+
+        /* Key Points Box */
+        .key-points-box {
+            background: var(--white);
+            border: 2px solid var(--orange);
+            border-radius: 0;
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .key-points-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .key-points-box h4 svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .key-points-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .key-points-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+        }
+
+        .key-points-list li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .homepage-breakdown-section {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+
+            .page-section-header {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--spacing-sm);
+            }
+
+            .animation-step {
+                flex-direction: column;
+            }
+
+            .step-visual {
+                width: 100%;
+                height: 100px;
+            }
+
+            .connection-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           HERO SECTION BREAKDOWN STYLES
+           ============================================ */
+        .hero-content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-inspiration {
+            background: var(--off-white);
+            padding: var(--spacing-lg);
+        }
+
+        .hero-inspiration h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-inspiration h4 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--orange);
+        }
+
+        .hero-inspiration h4 a {
+            color: var(--black);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .hero-inspiration h4 a:hover {
+            color: var(--orange);
+        }
+
+        .inspiration-video-wrapper {
+            aspect-ratio: 16 / 9;
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .inspiration-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-placeholder-inspo {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            background: var(--dark-gray);
+            color: var(--mid-gray);
+        }
+
+        .video-placeholder-inspo svg {
+            width: 32px;
+            height: 32px;
+            color: var(--orange);
+        }
+
+        .video-placeholder-inspo span {
+            font-size: 0.75rem;
+        }
+
+        /* Gradient Preview */
+        .gradient-sample {
+            background: var(--off-white);
+            padding: var(--spacing-lg);
+        }
+
+        .gradient-sample h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gradient-sample h4 svg {
+            width: 24px;
+            height: 24px;
+            color: var(--orange);
+        }
+
+        .gradient-placeholder {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 25%, var(--dark-teal) 50%, var(--dark-teal-dark) 75%, var(--black) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .gradient-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .gradient-placeholder-text {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .gradient-placeholder-text h5 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-placeholder-text p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .gradient-note {
+            margin-top: var(--spacing-sm);
+            font-size: 0.8125rem;
+            color: var(--mid-gray);
+            font-style: italic;
+        }
     </style>
 </head>
+
 <body>
     <!-- Main Content -->
     <main class="main-content">
@@ -1772,7 +2446,7 @@
             <div class="cover-scroll-indicator">
                 <span>Scroll to explore</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 5v14M5 12l7 7 7-7"/>
+                    <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
             </div>
         </section>
@@ -1786,13 +2460,19 @@
                 <div class="executive-header">
                     <div class="executive-label">Section 01</div>
                     <h2 class="executive-title">Executive Summary</h2>
-                    <p class="executive-subtitle">A comprehensive overview of the Flare Lighting website vision, strategy, and objectives.</p>
+                    <p class="executive-subtitle">A comprehensive overview of the Flare Lighting website vision,
+                        strategy, and objectives.</p>
                 </div>
 
                 <!-- Project Overview -->
                 <div class="overview-card">
                     <h3>Project Overview</h3>
-                    <p>Flare Lighting is a premium lighting solutions company committed to quality, consistency, and style. This website project aims to create a modern, businesslike digital presence that reflects the brand's commitment to excellence and serves as a powerful tool for connecting with A and A+ class premium customers and businesses. The website will embody the brand's core message — "Walk in the Light" — through sophisticated design, intuitive navigation, and compelling content that showcases Flare Lighting's comprehensive product range and industry expertise.</p>
+                    <p>Flare Lighting is a premium lighting solutions company committed to quality, consistency, and
+                        style. This website project aims to create a modern, businesslike digital presence that reflects
+                        the brand's commitment to excellence and serves as a powerful tool for connecting with A and A+
+                        class premium customers and businesses. The website will embody the brand's core message — "Walk
+                        in the Light" — through sophisticated design, intuitive navigation, and compelling content that
+                        showcases Flare Lighting's comprehensive product range and industry expertise.</p>
                 </div>
 
                 <!-- Goals & Objectives -->
@@ -1800,46 +2480,50 @@
                     <div class="goal-card">
                         <div class="goal-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 6v6l4 2"/>
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
                             </svg>
                         </div>
                         <h4>Establish Premium Presence</h4>
-                        <p>Create a sophisticated digital experience that positions Flare Lighting as a leader in the premium lighting industry, appealing to discerning A and A+ class clientele.</p>
+                        <p>Create a sophisticated digital experience that positions Flare Lighting as a leader in the
+                            premium lighting industry, appealing to discerning A and A+ class clientele.</p>
                     </div>
 
                     <div class="goal-card">
                         <div class="goal-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
                         <h4>Attract Quality Leads</h4>
-                        <p>Generate high-value business inquiries from premium customers and B2B partners seeking professional lighting solutions for commercial and residential projects.</p>
+                        <p>Generate high-value business inquiries from premium customers and B2B partners seeking
+                            professional lighting solutions for commercial and residential projects.</p>
                     </div>
 
                     <div class="goal-card">
                         <div class="goal-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <path d="M3 9h18M9 21V9"/>
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
                             </svg>
                         </div>
                         <h4>Showcase Product Excellence</h4>
-                        <p>Present the complete product catalog with high-quality imagery and detailed specifications that demonstrate superior craftsmanship and innovation.</p>
+                        <p>Present the complete product catalog with high-quality imagery and detailed specifications
+                            that demonstrate superior craftsmanship and innovation.</p>
                     </div>
 
                     <div class="goal-card">
                         <div class="goal-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
                             </svg>
                         </div>
                         <h4>Build Brand Authority</h4>
-                        <p>Establish Flare Lighting as an industry authority through content, case studies, and project showcases that highlight expertise and successful implementations.</p>
+                        <p>Establish Flare Lighting as an industry authority through content, case studies, and project
+                            showcases that highlight expertise and successful implementations.</p>
                     </div>
                 </div>
 
@@ -1850,19 +2534,23 @@
                         <div class="audience-card">
                             <div class="audience-badge">Primary</div>
                             <h4>Premium Residential Clients</h4>
-                            <p>High-net-worth homeowners and interior designers seeking luxury lighting solutions for upscale residential projects, villas, and premium apartments.</p>
+                            <p>High-net-worth homeowners and interior designers seeking luxury lighting solutions for
+                                upscale residential projects, villas, and premium apartments.</p>
                         </div>
 
                         <div class="audience-card">
                             <div class="audience-badge">Primary</div>
                             <h4>Commercial & Corporate</h4>
-                            <p>Business owners, facility managers, and corporate procurement teams requiring professional lighting for offices, retail spaces, hotels, and commercial developments.</p>
+                            <p>Business owners, facility managers, and corporate procurement teams requiring
+                                professional lighting for offices, retail spaces, hotels, and commercial developments.
+                            </p>
                         </div>
 
                         <div class="audience-card">
                             <div class="audience-badge">Secondary</div>
                             <h4>Architects & Consultants</h4>
-                            <p>Architecture firms, lighting consultants, and engineering companies specifying lighting solutions for large-scale projects and developments.</p>
+                            <p>Architecture firms, lighting consultants, and engineering companies specifying lighting
+                                solutions for large-scale projects and developments.</p>
                         </div>
                     </div>
                 </div>
@@ -1874,7 +2562,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Modern design with premium aesthetic</span>
@@ -1882,7 +2570,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Comprehensive product catalog with filtering</span>
@@ -1890,7 +2578,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>High-quality imagery with desaturated color photography</span>
@@ -1898,7 +2586,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Project portfolio & case studies showcase</span>
@@ -1906,7 +2594,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>SEO-optimized content and structure</span>
@@ -1914,7 +2602,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Responsive design for all devices</span>
@@ -1922,7 +2610,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Quote request & contact forms</span>
@@ -1930,7 +2618,7 @@
                         <div class="feature-item">
                             <div class="feature-check">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M20 6L9 17l-5-5"/>
+                                    <path d="M20 6L9 17l-5-5" />
                                 </svg>
                             </div>
                             <span>Technical specifications & downloads</span>
@@ -2053,7 +2741,8 @@
                 <div class="brand-header">
                     <div class="brand-label">Section 03</div>
                     <h2 class="brand-title">Brand Foundation</h2>
-                    <p class="brand-subtitle">The visual identity system that defines Flare Lighting's digital presence.</p>
+                    <p class="brand-subtitle">The visual identity system that defines Flare Lighting's digital presence.
+                    </p>
                 </div>
 
                 <!-- Color Palette -->
@@ -2067,7 +2756,8 @@
                             <div class="color-info">
                                 <div class="color-name">Flare Orange</div>
                                 <div class="color-hex">#ED7102</div>
-                                <div class="color-usage">Primary brand color. Use for CTAs, icons, highlights, and key UI elements. Represents energy, warmth, and innovation.</div>
+                                <div class="color-usage">Primary brand color. Use for CTAs, icons, highlights, and key
+                                    UI elements. Represents energy, warmth, and innovation.</div>
                             </div>
                         </div>
 
@@ -2078,18 +2768,21 @@
                             <div class="color-info">
                                 <div class="color-name">Dark Teal</div>
                                 <div class="color-hex">#31617F</div>
-                                <div class="color-usage">Secondary accent color. Use for supporting elements, hover states, and contrast. Represents trust, stability, and professionalism.</div>
+                                <div class="color-usage">Secondary accent color. Use for supporting elements, hover
+                                    states, and contrast. Represents trust, stability, and professionalism.</div>
                             </div>
                         </div>
 
                         <div class="color-card">
                             <div class="color-swatch black">
-                                <span class="color-badge neutral-badge" style="color: var(--white); background: rgba(255,255,255,0.2);">Neutral</span>
+                                <span class="color-badge neutral-badge"
+                                    style="color: var(--white); background: rgba(255,255,255,0.2);">Neutral</span>
                             </div>
                             <div class="color-info">
                                 <div class="color-name">Rich Black</div>
                                 <div class="color-hex">#1A1A1A</div>
-                                <div class="color-usage">Primary text color and dark backgrounds. Use for headings, body text, and high-contrast sections.</div>
+                                <div class="color-usage">Primary text color and dark backgrounds. Use for headings, body
+                                    text, and high-contrast sections.</div>
                             </div>
                         </div>
 
@@ -2100,7 +2793,8 @@
                             <div class="color-info">
                                 <div class="color-name">Pure White</div>
                                 <div class="color-hex">#FFFFFF</div>
-                                <div class="color-usage">Primary background color. Creates clean, spacious layouts that let content breathe and products shine.</div>
+                                <div class="color-usage">Primary background color. Creates clean, spacious layouts that
+                                    let content breathe and products shine.</div>
                             </div>
                         </div>
 
@@ -2111,18 +2805,21 @@
                             <div class="color-info">
                                 <div class="color-name">Off White</div>
                                 <div class="color-hex">#F8F9FA</div>
-                                <div class="color-usage">Secondary background for cards, sections, and subtle separation. Adds depth without visual noise.</div>
+                                <div class="color-usage">Secondary background for cards, sections, and subtle
+                                    separation. Adds depth without visual noise.</div>
                             </div>
                         </div>
 
                         <div class="color-card">
                             <div class="color-swatch mid-gray">
-                                <span class="color-badge neutral-badge" style="color: var(--white); background: rgba(255,255,255,0.3);">Neutral</span>
+                                <span class="color-badge neutral-badge"
+                                    style="color: var(--white); background: rgba(255,255,255,0.3);">Neutral</span>
                             </div>
                             <div class="color-info">
                                 <div class="color-name">Mid Gray</div>
                                 <div class="color-hex">#6C757D</div>
-                                <div class="color-usage">Secondary text, captions, and muted elements. Use for supporting information and subtle UI components.</div>
+                                <div class="color-usage">Secondary text, captions, and muted elements. Use for
+                                    supporting information and subtle UI components.</div>
                             </div>
                         </div>
                     </div>
@@ -2154,12 +2851,14 @@
                         </div>
                         <div class="type-row">
                             <div class="type-label">Body Text</div>
-                            <div class="type-sample body">Flare Lighting delivers exceptional illumination solutions that transform spaces with elegance and efficiency.</div>
+                            <div class="type-sample body">Flare Lighting delivers exceptional illumination solutions
+                                that transform spaces with elegance and efficiency.</div>
                             <div class="type-meta">400 / 1rem</div>
                         </div>
                         <div class="type-row">
                             <div class="type-label">Small Text</div>
-                            <div class="type-sample body-small">Technical specifications and product details for professional applications.</div>
+                            <div class="type-sample body-small">Technical specifications and product details for
+                                professional applications.</div>
                             <div class="type-meta">400 / 0.875rem</div>
                         </div>
                         <div class="type-row">
@@ -2199,31 +2898,37 @@
                     <div class="logo-grid">
                         <div class="logo-card">
                             <div class="logo-preview light-bg">
-                                <img src="main.webp" alt="Flare Lighting Main Logo" style="max-width: 200px; height: auto;">
+                                <img src="main.webp" alt="Flare Lighting Main Logo"
+                                    style="max-width: 200px; height: auto;">
                             </div>
                             <div class="logo-description">
                                 <div class="logo-variant">Primary Logo</div>
-                                <div class="logo-context">Use on white or light backgrounds. Default for most applications.</div>
+                                <div class="logo-context">Use on white or light backgrounds. Default for most
+                                    applications.</div>
                             </div>
                         </div>
 
                         <div class="logo-card">
                             <div class="logo-preview light-bg">
-                                <img src="black.webp" alt="Flare Lighting Black Logo" style="max-width: 200px; height: auto;">
+                                <img src="black.webp" alt="Flare Lighting Black Logo"
+                                    style="max-width: 200px; height: auto;">
                             </div>
                             <div class="logo-description">
                                 <div class="logo-variant">Black Logo</div>
-                                <div class="logo-context">Monochrome version for single-color applications and print materials.</div>
+                                <div class="logo-context">Monochrome version for single-color applications and print
+                                    materials.</div>
                             </div>
                         </div>
 
                         <div class="logo-card">
                             <div class="logo-preview dark-bg">
-                                <img src="white.webp" alt="Flare Lighting White Logo" style="max-width: 200px; height: auto;">
+                                <img src="white.webp" alt="Flare Lighting White Logo"
+                                    style="max-width: 200px; height: auto;">
                             </div>
                             <div class="logo-description">
                                 <div class="logo-variant">White Logo</div>
-                                <div class="logo-context">Use on dark backgrounds. Maintains brand recognition in dark contexts.</div>
+                                <div class="logo-context">Use on dark backgrounds. Maintains brand recognition in dark
+                                    contexts.</div>
                             </div>
                         </div>
                     </div>
@@ -2236,45 +2941,51 @@
                         <div class="voice-card">
                             <div class="voice-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
                                 </svg>
                             </div>
                             <h4>Professional</h4>
-                            <p>Communicate with authority and expertise. Use precise, industry-appropriate language that builds trust with premium clients.</p>
+                            <p>Communicate with authority and expertise. Use precise, industry-appropriate language that
+                                builds trust with premium clients.</p>
                         </div>
 
                         <div class="voice-card">
                             <div class="voice-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                                    <line x1="9" y1="9" x2="9.01" y2="9"/>
-                                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                                    <line x1="9" y1="9" x2="9.01" y2="9" />
+                                    <line x1="15" y1="9" x2="15.01" y2="9" />
                                 </svg>
                             </div>
                             <h4>Approachable</h4>
-                            <p>Balance professionalism with warmth. Make technical information accessible while maintaining a welcoming presence.</p>
+                            <p>Balance professionalism with warmth. Make technical information accessible while
+                                maintaining a welcoming presence.</p>
                         </div>
 
                         <div class="voice-card">
                             <div class="voice-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                                 </svg>
                             </div>
                             <h4>Premium</h4>
-                            <p>Emphasize quality and excellence. Every word should reinforce the brand's commitment to superior products and service.</p>
+                            <p>Emphasize quality and excellence. Every word should reinforce the brand's commitment to
+                                superior products and service.</p>
                         </div>
 
                         <div class="voice-card">
                             <div class="voice-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                    <path
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                 </svg>
                             </div>
                             <h4>Innovative</h4>
-                            <p>Highlight forward-thinking solutions. Position Flare Lighting as a leader in lighting technology and design innovation.</p>
+                            <p>Highlight forward-thinking solutions. Position Flare Lighting as a leader in lighting
+                                technology and design innovation.</p>
                         </div>
                     </div>
                 </div>
@@ -2295,7 +3006,8 @@
                             </div>
                             <div class="element-info">
                                 <div class="element-name">Vertical Lines Pattern</div>
-                                <div class="element-desc">Use subtle vertical lines to create rhythm and visual interest. Represents light rays and precision.</div>
+                                <div class="element-desc">Use subtle vertical lines to create rhythm and visual
+                                    interest. Represents light rays and precision.</div>
                             </div>
                         </div>
 
@@ -2305,7 +3017,24 @@
                             </div>
                             <div class="element-info">
                                 <div class="element-name">Brand Gradient</div>
-                                <div class="element-desc">Orange to Dark Teal gradient for accent elements, dividers, and decorative touches. Use sparingly.</div>
+                                <div class="element-desc">Orange to Dark Teal gradient for accent elements, dividers,
+                                    and decorative touches. Use sparingly.</div>
+                            </div>
+                        </div>
+
+                        <div class="element-card">
+                            <div class="element-preview">
+                                <div class="sharp-edges-preview">
+                                    <div class="sharp-shape sharp-rect-1"></div>
+                                    <div class="sharp-shape sharp-rect-2"></div>
+                                    <div class="sharp-shape sharp-rect-3"></div>
+                                </div>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Sharp Edges</div>
+                                <div class="element-desc">All UI elements use sharp, clean corners with no
+                                    border-radius. This reinforces the brand's precise, professional, and modern
+                                    aesthetic.</div>
                             </div>
                         </div>
 
@@ -2315,11 +3044,151 @@
                             </div>
                             <div class="element-info">
                                 <div class="element-name">Cursor Dot Follower</div>
-                                <div class="element-desc">A glowing orange dot follows the cursor throughout the website, symbolizing the guiding light that Flare Lighting brings to every space. This subtle interactive element embodies the brand's promise to illuminate the path forward.</div>
+                                <div class="element-desc">A glowing orange dot follows the cursor throughout the
+                                    website, symbolizing the guiding light that Flare Lighting brings to every space.
+                                    This subtle interactive element embodies the brand's promise to illuminate the path
+                                    forward.</div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 04: HOMEPAGE - DETAILED BREAKDOWN
+             ============================================ -->
+        <section class="homepage-breakdown-section section" id="homepage-breakdown">
+            <div class="homepage-breakdown-container">
+                <!-- Section Header -->
+                <div class="homepage-breakdown-header">
+                    <div class="homepage-breakdown-label">Section 04</div>
+                    <h2 class="homepage-breakdown-title">Homepage - Detailed Breakdown</h2>
+                    <p class="homepage-breakdown-subtitle">A section-by-section exploration of the homepage design.</p>
+                </div>
+
+                <!-- Reveal Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">01</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Reveal</h3>
+                            <span class="page-section-type">Opening Experience</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <!-- Strategy -->
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The website opens with a full-screen animated layer displaying the brand tagline "Walk in
+                                the Light" before sliding upward to reveal the homepage. This opening experience
+                                directly symbolizes the act of walking in the light, visitors transition from a bold,
+                                branded moment into the illuminated world of Flare Lighting. It transforms the tagline
+                                from words into a lived experience, setting the tone for everything that follows.</p>
+                        </div>
+
+                        <!-- Video Preview -->
+                        <div class="video-preview-container">
+                            <div class="video-preview-wrapper">
+                                <video src="reveal.mov" autoplay loop muted playsinline></video>
+                            </div>
+                            <p class="video-caption">Animation preview: Full-screen overlay with tagline slides upward
+                                to reveal the homepage beneath</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">02</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Hero Section</h3>
+                            <span class="page-section-type">First Impression</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <!-- Strategy -->
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The hero section creates a captivating first impression through a dynamic, animated
+                                shader gradient that uses the brand colors. Inspired by premium digital experiences,
+                                this moving gradient establishes Flare Lighting as an innovative, forward-thinking brand
+                                while the bold headline communicates the core value proposition immediately.</p>
+                        </div>
+
+                        <!-- Inspiration & Gradient Grid -->
+                        <div class="hero-content-grid">
+                            <!-- Inspiration Video 1 -->
+                            <div class="hero-inspiration">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+                                    <a href="https://kota.co.uk" target="_blank">kota.co.uk</a>
+                                </h4>
+                                <div class="inspiration-video-wrapper">
+                                    <video src="kota.mov" autoplay loop muted playsinline></video>
+                                </div>
+                            </div>
+
+                            <!-- Inspiration Video 2 -->
+                            <div class="hero-inspiration">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+                                    <a href="https://stripe.com" target="_blank">stripe.com</a>
+                                </h4>
+                                <div class="inspiration-video-wrapper">
+                                    <video src="stripe.mov" autoplay loop muted playsinline></video>
+                                </div>
+                            </div>
+
+                            <!-- Inspiration Video 3 -->
+                            <div class="hero-inspiration">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                        <circle cx="12" cy="12" r="3" />
+                                    </svg>
+                                    <a href="https://backhouse.com" target="_blank">backhouse.com</a>
+                                </h4>
+                                <div class="inspiration-video-wrapper">
+                                    <video src="backhouse.mov" autoplay loop muted playsinline></video>
+                                </div>
+                            </div>
+
+                            <!-- Gradient Sample -->
+                            <div class="gradient-sample">
+                                <h4>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="3" width="18" height="18" />
+                                        <path d="M3 9h18" />
+                                        <path d="M9 21V9" />
+                                    </svg>
+                                    Gradient Preview
+                                </h4>
+                                <div class="gradient-placeholder">
+                                    <!-- Replace with actual shader/WebGL gradient later -->
+                                    <div class="gradient-placeholder-text">
+                                        <h5>Shader Gradient</h5>
+                                        <p>Custom WebGL implementation</p>
+                                    </div>
+                                </div>
+                                <p class="gradient-note">CSS approximation. Final will use WebGL/Three.js.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Additional homepage sections can be added here following the same pattern -->
+
             </div>
         </section>
 
@@ -2328,7 +3197,7 @@
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 19V5M5 12l7-7 7 7"/>
+            <path d="M12 19V5M5 12l7-7 7 7" />
         </svg>
     </button>
 
@@ -2336,7 +3205,7 @@
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18 6L6 18M6 6l12 12"/>
+                <path d="M18 6L6 18M6 6l12 12" />
             </svg>
         </button>
         <div class="lightbox-content" id="lightboxContent"></div>
@@ -2453,4 +3322,5 @@
         console.log('FLARE LIGHTING Moodboard initialized');
     </script>
 </body>
+
 </html>
