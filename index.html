@@ -2345,56 +2345,17 @@
 
         .gradient-placeholder {
             aspect-ratio: 16 / 9;
-            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 25%, var(--dark-teal) 50%, var(--dark-teal-dark) 75%, var(--black) 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--black);
             position: relative;
             overflow: hidden;
         }
 
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .gradient-placeholder::before {
-            content: '';
+        .gradient-placeholder canvas {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-        }
-
-        .gradient-placeholder-text {
-            text-align: center;
-            z-index: 1;
-        }
-
-        .gradient-placeholder-text h5 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .gradient-placeholder-text p {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
+            width: 100% !important;
+            height: 100% !important;
         }
 
         .gradient-note {
@@ -3174,13 +3135,9 @@
                                     Gradient Preview
                                 </h4>
                                 <div class="gradient-placeholder">
-                                    <!-- Replace with actual shader/WebGL gradient later -->
-                                    <div class="gradient-placeholder-text">
-                                        <h5>Shader Gradient</h5>
-                                        <p>Custom WebGL implementation</p>
-                                    </div>
+                                    <div data-us-project="BQVpNKbernG29biYNJDu" style="width:100%; height: 100%"></div>
                                 </div>
-                                <p class="gradient-note">CSS approximation. Final will use WebGL/Three.js.</p>
+                                <p class="gradient-note">Preview created using Unicorn Studio. Final implementation may differ.</p>
                             </div>
                         </div>
 
@@ -3210,6 +3167,9 @@
         </button>
         <div class="lightbox-content" id="lightboxContent"></div>
     </div>
+
+    <!-- Unicorn Studio Shader Gradient -->
+    <script type="text/javascript">!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.0.5/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();</script>
 
     <!-- JavaScript -->
     <script>
