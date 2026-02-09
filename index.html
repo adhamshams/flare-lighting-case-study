@@ -2362,7 +2362,58 @@
             margin-top: var(--spacing-sm);
             font-size: 0.8125rem;
             color: var(--mid-gray);
-            font-style: italic;
+        }
+
+        /* Section Elements List */
+        .section-elements {
+            background: var(--off-white);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .section-elements h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-elements h4::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--orange);
+        }
+
+        .elements-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .elements-list li {
+            font-size: 0.9375rem;
+            color: var(--dark-gray);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .elements-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+        }
+
+        .elements-list li strong {
+            color: var(--black);
         }
     </style>
 </head>
@@ -2983,22 +3034,6 @@
                             </div>
                         </div>
 
-                        <div class="element-card">
-                            <div class="element-preview">
-                                <div class="sharp-edges-preview">
-                                    <div class="sharp-shape sharp-rect-1"></div>
-                                    <div class="sharp-shape sharp-rect-2"></div>
-                                    <div class="sharp-shape sharp-rect-3"></div>
-                                </div>
-                            </div>
-                            <div class="element-info">
-                                <div class="element-name">Sharp Edges</div>
-                                <div class="element-desc">All UI elements use sharp, clean corners with no
-                                    border-radius. This reinforces the brand's precise, professional, and modern
-                                    aesthetic.</div>
-                            </div>
-                        </div>
-
                         <div class="element-card cursor-dot-card">
                             <div class="element-preview">
                                 <video src="cursor.mov" autoplay loop muted playsinline></video>
@@ -3137,14 +3172,155 @@
                                 <div class="gradient-placeholder">
                                     <div data-us-project="BQVpNKbernG29biYNJDu" style="width:100%; height: 100%"></div>
                                 </div>
-                                <p class="gradient-note">Preview created using Unicorn Studio. Final implementation may differ.</p>
+                                <p class="gradient-note">The flowing gradient uses brand colors with soft reflections and light diffusion effects, evoking the natural behavior of light as it spreads and reflects across surfaces. Preview created using Unicorn Studio, final implementation may differ.</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- Additional homepage sections can be added here following the same pattern -->
+                <!-- About Preview Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">03</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">About Preview</h3>
+                            <span class="page-section-type">Brand Introduction</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>A brief introduction to Flare Lighting's story and values that creates emotional connection without overwhelming the visitor. This section serves as a teaser that invites users to learn more, driving traffic to the full About page while establishing brand credibility early in the journey.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Headline:</strong> Engaging introduction (e.g., "Lighting the Way Since [Year]")</li>
+                                <li><strong>Brief Copy:</strong> 2-3 sentences about mission, quality commitment, and brand values</li>
+                                <li><strong>Visual:</strong> Brand imagery or subtle decorative element</li>
+                                <li><strong>CTA:</strong> "Learn Our Story" → Links to About page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Products Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">04</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Featured Products</h3>
+                            <span class="page-section-type">Product Showcase</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Showcase Flare Lighting's hero products to capture interest and demonstrate the range and quality of offerings. This section acts as a visual catalog preview, enticing visitors to explore the full product collection while highlighting bestsellers or new arrivals.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Section Title:</strong> "Our Collection" or "Featured Lighting"</li>
+                                <li><strong>Product Grid:</strong> 3-4 featured product categories or specific products</li>
+                                <li><strong>Product Cards:</strong> High-quality image, product name, brief description</li>
+                                <li><strong>Hover Interaction:</strong> Subtle animation or additional info reveal</li>
+                                <li><strong>CTA:</strong> "View All Products" → Links to Products page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Projects Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">05</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Featured Projects</h3>
+                            <span class="page-section-type">Portfolio Preview</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Display real-world applications of Flare Lighting products to build credibility and inspire potential clients. Seeing completed projects helps visitors envision how the products could transform their own spaces, while demonstrating the brand's experience with both residential and commercial installations.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Section Title:</strong> "Our Work" or "Featured Projects"</li>
+                                <li><strong>Project Gallery:</strong> Grid or carousel of 3-6 completed projects</li>
+                                <li><strong>Project Cards:</strong> Project image, name, location/type, brief description</li>
+                                <li><strong>Visual Style:</strong> High-quality photography showcasing lighting in context</li>
+                                <li><strong>CTA:</strong> "See All Projects" → Links to Projects/Portfolio page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">06</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Social Proof</h3>
+                            <span class="page-section-type">Trust Building</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Build trust and credibility through partnerships, client testimonials, and industry recognition. This section reassures potential customers that Flare Lighting is a trusted choice, backed by satisfied clients and reputable business partners.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Partner Logos:</strong> Grid of business partner/client logos</li>
+                                <li><strong>Testimonial:</strong> Featured quote from a satisfied client</li>
+                                <li><strong>Stats (Optional):</strong> Years in business, projects completed, clients served</li>
+                                <li><strong>CTA:</strong> "Our Partners" → Links to Business Partners section/page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">07</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Contact Section</h3>
+                            <span class="page-section-type">Conversion</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Provide easy access to contact Flare Lighting, removing friction from the conversion process. This section should make it effortless for interested visitors to reach out, whether for inquiries, quotes, or partnerships.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Section Title:</strong> "Get in Touch" or "Let's Connect"</li>
+                                <li><strong>Contact Form:</strong> Name, email, message fields (simple and quick)</li>
+                                <li><strong>Contact Info:</strong> Email address, phone number, location</li>
+                                <li><strong>Office Hours:</strong> When the team is available</li>
+                                <li><strong>CTA:</strong> "Send Message" or "Contact Us"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
