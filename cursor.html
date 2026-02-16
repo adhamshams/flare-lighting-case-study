@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* Reset-ish */
     * {
       margin: 0;
       padding: 0;
@@ -17,6 +16,9 @@
       height: 100vh;
       background: #F8F9FA;
       font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Cursor dot */
@@ -27,26 +29,123 @@
       background: #ED7102;
       border-radius: 50%;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 9998;
       transform: translate(-65%, -65%);
+      transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+                  height 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .cursor-dot.expanded {
+      width: 60px;
+      height: 60px;
+    }
+
+    /* Logo wrapper */
+    .nav-logo {
+      position: relative;
+      z-index: 9999;
+    }
+
+    .nav-logo img {
+      width: 240px;
+      height: auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    /* Black version - always visible */
+    .nav-logo .logo-black {
+      filter: brightness(0);
+    }
+
+    /* White version - clipped to cursor circle */
+    .nav-logo .logo-color {
+      position: absolute;
+      top: 0;
+      left: 0;
+      filter: brightness(0) invert(1);
+      clip-path: circle(0px at 0px 0px);
+    }
+
+    /* Gradient border button */
+    .btn-gradient {
+      position: relative;
+      background: #F8F9FA;
+      border: none;
+      padding: 14px 40px;
+      font-family: 'Cairo', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      cursor: pointer;
+      margin-top: 100px;
+    }
+
+    .btn-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid #1a1a1a;
+      pointer-events: none;
+      transition: border-color 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .btn-gradient::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #ed7102, #31617f) 1;
+      pointer-events: none;
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .btn-gradient:hover::after {
+      clip-path: inset(0 0 0 0);
     }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <div class="cursor-dot"></div>
 
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="nav-logo">
+      <img class="logo-black" src="nav-header.png" alt="Flare Lighting" />
+      <img class="logo-color" src="nav-header.png" alt="" />
+    </div>
+    <button class="btn-gradient">Explore Products</button>
+  </div>
+
   <script>
     const cursor = document.querySelector(".cursor-dot");
+    const logo = document.querySelector(".nav-logo");
+    const logoColor = document.querySelector(".logo-color");
 
     let mouseX = 0;
     let mouseY = 0;
     let currentX = 0;
     let currentY = 0;
+    let isHovering = false;
 
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+    });
+
+    logo.addEventListener("mouseenter", () => {
+      cursor.classList.add("expanded");
+      isHovering = true;
+    });
+
+    logo.addEventListener("mouseleave", () => {
+      cursor.classList.remove("expanded");
+      isHovering = false;
+      logoColor.style.clipPath = `circle(0px at 0px 0px)`;
     });
 
     function animate() {
@@ -55,6 +154,16 @@
 
       cursor.style.left = `${currentX}px`;
       cursor.style.top = `${currentY}px`;
+
+      if (isHovering) {
+        const rect = logo.getBoundingClientRect();
+        const dotSize = cursor.getBoundingClientRect().width;
+        const centerOffset = (-0.65 * dotSize) + (dotSize / 2);
+        const relX = currentX + centerOffset - rect.left;
+        const relY = currentY + centerOffset - rect.top;
+        logoColor.style.clipPath = `circle(${dotSize / 2}px at ${relX}px ${relY}px)`;
+      }
+
       requestAnimationFrame(animate);
     }
 

@@ -844,11 +844,15 @@
 
         @media (max-width: 768px) {
             .executive-section {
-                padding: var(--spacing-lg) var(--spacing-md);
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .executive-header {
+                margin-bottom: var(--spacing-lg);
             }
 
             .overview-card {
-                padding: var(--spacing-md);
+                padding: var(--spacing-sm);
             }
 
             .goals-grid {
@@ -1090,11 +1094,15 @@
 
         @media (max-width: 768px) {
             .sitemap-section {
-                padding: var(--spacing-lg) var(--spacing-md);
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .sitemap-header {
+                margin-bottom: var(--spacing-md);
             }
 
             .sitemap-tree {
-                padding: var(--spacing-md);
+                padding: var(--spacing-sm);
             }
 
             .sitemap-level {
@@ -1777,7 +1785,11 @@
 
         @media (max-width: 768px) {
             .brand-section {
-                padding: var(--spacing-lg) var(--spacing-md);
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .brand-header {
+                margin-bottom: var(--spacing-lg);
             }
 
             .type-row {
@@ -2223,13 +2235,47 @@
 
         @media (max-width: 768px) {
             .homepage-breakdown-section {
-                padding: var(--spacing-lg) var(--spacing-md);
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .homepage-breakdown-header {
+                margin-bottom: var(--spacing-lg);
             }
 
             .page-section-header {
                 flex-direction: column;
                 text-align: center;
                 gap: var(--spacing-sm);
+                padding: var(--spacing-sm) var(--spacing-md);
+            }
+
+            .page-section-content {
+                padding: var(--spacing-md);
+            }
+
+            .section-elements {
+                padding: var(--spacing-md);
+                margin-top: var(--spacing-md);
+            }
+
+            .animation-breakdown {
+                padding: var(--spacing-md);
+            }
+
+            .hero-inspiration {
+                padding: var(--spacing-md);
+            }
+
+            .page-section-block {
+                margin-bottom: var(--spacing-md);
+            }
+
+            .section-strategy {
+                margin-bottom: var(--spacing-md);
+            }
+
+            .video-preview-container {
+                margin-bottom: var(--spacing-md);
             }
 
             .animation-step {
@@ -2415,6 +2461,258 @@
         .elements-list li strong {
             color: var(--black);
         }
+
+        /* ============================================
+           ABOUT PAGE DETAILED BREAKDOWN SECTION
+           ============================================ */
+        .about-breakdown-section {
+            background: var(--white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .about-breakdown-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-breakdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .about-breakdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-breakdown-label::before,
+        .about-breakdown-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .about-breakdown-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-breakdown-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-breakdown-section {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .about-breakdown-header {
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        /* ============================================
+           PRODUCTS PAGE DETAILED BREAKDOWN SECTION
+           ============================================ */
+        .products-breakdown-section {
+            background: var(--off-white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .products-breakdown-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-breakdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .products-breakdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .products-breakdown-label::before,
+        .products-breakdown-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .products-breakdown-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .products-breakdown-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .products-breakdown-section {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .products-breakdown-header {
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        /* ============================================
+           PROJECTS PAGE DETAILED BREAKDOWN SECTION
+           ============================================ */
+        .projects-breakdown-section {
+            background: var(--white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .projects-breakdown-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projects-breakdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .projects-breakdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .projects-breakdown-label::before,
+        .projects-breakdown-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .projects-breakdown-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .projects-breakdown-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .projects-breakdown-section {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .projects-breakdown-header {
+                margin-bottom: var(--spacing-lg);
+            }
+        }
+
+        /* ============================================
+           CONTACT PAGE DETAILED BREAKDOWN SECTION
+           ============================================ */
+        .contact-breakdown-section {
+            background: var(--off-white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .contact-breakdown-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-breakdown-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-breakdown-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-breakdown-label::before,
+        .contact-breakdown-label::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .contact-breakdown-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-breakdown-subtitle {
+            font-size: 1.125rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .contact-breakdown-section {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .contact-breakdown-header {
+                margin-bottom: var(--spacing-lg);
+            }
+        }
     </style>
 </head>
 
@@ -2482,8 +2780,8 @@
                     <p>Flare Lighting is a premium lighting solutions company committed to quality, consistency, and
                         style. This website project aims to create a modern, businesslike digital presence that reflects
                         the brand's commitment to excellence and serves as a powerful tool for connecting with A and A+
-                        class premium customers and businesses. The website will embody the brand's core message — "Walk
-                        in the Light" — through sophisticated design, intuitive navigation, and compelling content that
+                        class premium customers and businesses. The website will embody the brand's core message -"Walk
+                        in the Light" -through sophisticated design, intuitive navigation, and compelling content that
                         showcases Flare Lighting's comprehensive product range and industry expertise.</p>
                 </div>
 
@@ -3046,6 +3344,31 @@
                                     forward.</div>
                             </div>
                         </div>
+
+                        <div class="element-card cursor-dot-card">
+                            <div class="element-preview">
+                                <video src="nav-logo.mov" autoplay loop muted playsinline></video>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Logo Reveal on Hover</div>
+                                <div class="element-desc">The navigation logo appears as a black silhouette by default.
+                                    When the cursor dot hovers over it, the dot expands and acts as a revealing light -
+                                    only the area under the circle shows the logo in white, creating an interactive
+                                    spotlight effect.</div>
+                            </div>
+                        </div>
+
+                        <div class="element-card cursor-dot-card">
+                            <div class="element-preview">
+                                <video src="button.mov" autoplay loop muted playsinline></video>
+                            </div>
+                            <div class="element-info">
+                                <div class="element-name">Gradient Border Animation</div>
+                                <div class="element-desc">Buttons feature a subtle black border that transforms on
+                                    hover -a gradient border in brand colors slides in from left to right, bringing
+                                    energy and reinforcing the brand palette through micro-interaction.</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3236,10 +3559,52 @@
                     </div>
                 </div>
 
-                <!-- Featured Projects Section Block -->
+                <!-- 3D Light Interaction Section Block -->
                 <div class="page-section-block">
                     <div class="page-section-header">
                         <div class="page-section-number">05</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Light Interaction</h3>
+                            <span class="page-section-type">Immersive Experience</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>A minimal, interactive scene that lets the visitor explore how light transforms a space. The user is placed inside a clean architectural room and can control a Flare light source - moving it, toggling it on/off, and watching in real time how shadows, warmth, and ambiance shift across walls, furniture, and surfaces. This section turns a passive scroll into an active experience, making the brand's core value proposition tangible: light changes everything. It serves as the "wow" moment on the homepage, memorable enough to drive word-of-mouth and revisits. This interactive scene can also double as one of the featured projects - a real Flare installation recreated as an explorable space, blurring the line between portfolio showcase and interactive experience.</p>
+                        </div>
+
+                        <!-- Demo Video -->
+                        <div class="hero-inspiration">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Interaction Reference
+                            </h4>
+                            <div class="inspiration-video-wrapper">
+                                <video autoplay muted loop playsinline>
+                                    <source src="demo.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Room Scene:</strong> A minimal, clean interior space with realistic light and shadow behavior - a single room with furniture silhouettes and textured walls</li>
+                                <li><strong>Draggable Light Source:</strong> The user can click/drag to reposition a Flare light fixture within the scene, watching shadows and highlights update in real time</li>
+                                <li><strong>Light Toggle:</strong> On/off switch that plunges the room into darkness or illuminates it - a dramatic before/after that reinforces the brand's "Walk in the Light" tagline</li>
+                                <li><strong>Color Temperature Slider:</strong> Warm to cool white adjustment, showing how Flare products offer range and control over ambiance</li>
+                                <li><strong>Minimal UI Overlay:</strong> Small instructional text ("Drag the light to explore") that fades after first interaction. Product name and specs appear in a subtle corner card</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Projects Section Block -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">06</div>
                         <div class="page-section-title-group">
                             <h3 class="page-section-name">Featured Projects</h3>
                             <span class="page-section-type">Portfolio Preview</span>
@@ -3268,7 +3633,7 @@
                 <!-- Social Proof Section Block -->
                 <div class="page-section-block">
                     <div class="page-section-header">
-                        <div class="page-section-number">06</div>
+                        <div class="page-section-number">07</div>
                         <div class="page-section-title-group">
                             <h3 class="page-section-name">Social Proof</h3>
                             <span class="page-section-type">Trust Building</span>
@@ -3279,6 +3644,17 @@
                         <div class="section-strategy">
                             <h4>Strategic Intent</h4>
                             <p>Build trust and credibility through partnerships, client testimonials, and industry recognition. This section reassures potential customers that Flare Lighting is a trusted choice, backed by satisfied clients and reputable business partners.</p>
+                        </div>
+
+                        <!-- Reference Image -->
+                        <div class="hero-inspiration">
+                            <h4>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Visual Reference
+                            </h4>
+                            <div class="inspiration-video-wrapper" style="aspect-ratio: auto;">
+                                <img src="social-proof.png" alt="Social proof section reference" style="width: 100%; height: auto; object-fit: contain; display: block;">
+                            </div>
                         </div>
 
                         <div class="section-elements">
@@ -3296,7 +3672,7 @@
                 <!-- Contact Section Block -->
                 <div class="page-section-block">
                     <div class="page-section-header">
-                        <div class="page-section-number">07</div>
+                        <div class="page-section-number">08</div>
                         <div class="page-section-title-group">
                             <h3 class="page-section-name">Contact Section</h3>
                             <span class="page-section-type">Conversion</span>
@@ -3317,6 +3693,507 @@
                                 <li><strong>Contact Info:</strong> Email address, phone number, location</li>
                                 <li><strong>Office Hours:</strong> When the team is available</li>
                                 <li><strong>CTA:</strong> "Send Message" or "Contact Us"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 05: ABOUT PAGE - DETAILED BREAKDOWN
+             ============================================ -->
+        <section class="about-breakdown-section section" id="about-breakdown">
+            <div class="about-breakdown-container">
+                <!-- Section Header -->
+                <div class="about-breakdown-header">
+                    <div class="about-breakdown-label">Section 05</div>
+                    <h2 class="about-breakdown-title">About Page - Detailed Breakdown</h2>
+                    <p class="about-breakdown-subtitle">Telling the Flare Lighting brand story through a compelling narrative arc -from local roots to premium craftsmanship.</p>
+                </div>
+
+                <!-- 01: The Opening Statement -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">01</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">The Opening Statement</h3>
+                            <span class="page-section-type">Brand Hook</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The About page opens with a full-width cinematic hero that immediately establishes Flare Lighting's identity as a premium local manufacturer -not a reseller, not a distributor. A bold, declarative headline sets the tone before the visitor scrolls a single pixel. This is the brand's handshake: confident, purposeful, and unapologetic about the quality of what they build. A desaturated, high-contrast image of light in an architectural space anchors the statement visually, with the brand's orange accent drawing the eye to a scroll indicator below.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Hero Image:</strong> Full-width, high-contrast desaturated photograph -light illuminating an interior or architectural space, reinforcing the brand's purpose</li>
+                                <li><strong>Headline:</strong> A bold brand declaration that positions Flare as a maker (e.g. "We Don't Just Sell Lighting. We Craft How People Experience Space.")</li>
+                                <li><strong>Subtext:</strong> A grounding line establishing local manufacturing identity (e.g. "Premium lighting, locally manufactured with precision and purpose")</li>
+                                <li><strong>Scroll Indicator:</strong> Subtle animated arrow in orange, inviting the visitor deeper into the story</li>
+                                <li><strong>Visual Treatment:</strong> Dark gradient overlay (bottom-heavy) for text legibility, keeping imagery desaturated per brand guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02: Our Story -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">02</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Our Story</h3>
+                            <span class="page-section-type">Origin & Mission</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Every premium brand has an origin story worth telling. This section reveals the spark behind Flare Lighting -the founding vision, the gap seen in the local market, and the conviction that quality lighting should be manufactured locally with uncompromising standards. The narrative weaves together the founding story with the brand's mission and values, treating them as one continuous thread rather than separate corporate blocks. Visitors should leave this section understanding not just what Flare does, but why it exists and why local manufacturing is a deliberate, proud choice. The layout uses an editorial two-column approach -story on one side, a meaningful image on the other -creating an intimate, magazine-quality reading experience.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Narrative Copy:</strong> 2-3 paragraphs telling the founding story -the initial vision, why the founders chose local manufacturing, and how the early commitment to quality shaped everything that followed</li>
+                                <li><strong>Year Badge:</strong> A prominent date marker anchoring the story in time, styled as an orange accent block</li>
+                                <li><strong>Founder's Quote:</strong> A pull quote with the signature orange left-border accent -a defining statement about the brand's purpose or philosophy</li>
+                                <li><strong>Mission Woven In:</strong> Rather than a separate "mission statement" block, the brand's mission and values emerge naturally through the story -quality, local craftsmanship, customer partnership, and innovation</li>
+                                <li><strong>Editorial Image:</strong> A meaningful photograph -could be the workshop, the founding moment, or the first product -treated with the brand's desaturated, high-contrast photography style</li>
+                                <li><strong>Layout:</strong> Two-column split (text left, image right) on desktop, stacking naturally on mobile</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03: The Craft -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">03</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">The Craft</h3>
+                            <span class="page-section-type">Manufacturing & Quality</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>This is the heart of the About page and the core justification for Flare's premium positioning. While competitors may source and resell, Flare manufactures -and this section makes that difference tangible. The visitor should feel the care that goes into every product: the materials chosen, the production process followed, the quality checks passed. This isn't a factory tour; it's a story about standards. Every element reinforces one message: when you choose Flare, you're choosing something made with intention, precision, and local pride. The section uses a combination of process descriptions and visual cues to communicate craftsmanship without requiring actual photography (which can be added later).</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Materials Sourcing:</strong> How and where Flare sources its raw materials -emphasis on quality selection and standards that exceed industry norms</li>
+                                <li><strong>Production Process:</strong> An overview of the manufacturing workflow -from design to finished product -highlighting the hands-on expertise and precision at each stage</li>
+                                <li><strong>Quality Control:</strong> The testing and inspection standards every product must pass before it carries the Flare name -this builds confidence in the premium price point</li>
+                                <li><strong>Attention to Detail:</strong> The finishing touches that separate a Flare product from mass-produced alternatives -surface treatments, assembly precision, packaging quality</li>
+                                <li><strong>Local Manufacturing Pride:</strong> A clear statement about why manufacturing locally matters -supporting the local economy, faster turnaround, direct oversight of quality</li>
+                                <li><strong>Visual Treatment:</strong> Process-oriented imagery slots (factory floor, close-up product details, materials) -desaturated photography style consistent with brand guidelines</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04: Impact & Vision -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">04</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Impact & Vision</h3>
+                            <span class="page-section-type">Track Record & Future</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>After telling the story and showcasing the craft, this section delivers the proof -then points forward. It bridges what Flare has already accomplished with where the brand is headed, creating a sense of momentum and ambition. The statistics provide instant credibility (numbers speak louder than paragraphs), while the forward-looking vision statement prevents the brand from feeling static. A premium manufacturer doesn't just rest on past success; it innovates. This section should leave visitors feeling that Flare is both proven and evolving -a brand worth partnering with for the long term.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Statistics Grid:</strong> 3-4 key metrics displayed as large bold numbers (orange) with supporting labels (dark gray) -years in business, products manufactured, projects delivered, clients served</li>
+                                <li><strong>Milestone Highlights:</strong> 2-3 key company milestones presented as a compact visual timeline -founding, first major project, expansion, product line launches</li>
+                                <li><strong>Vision Statement:</strong> 1-2 paragraphs on where Flare is headed -new product innovation, sustainable manufacturing practices, market expansion, smart lighting integration</li>
+                                <li><strong>Forward-Looking Tone:</strong> The language shifts from reflective to aspirational -future tense, ambitious but grounded in the manufacturing expertise already proven</li>
+                                <li><strong>Optional Client Logos:</strong> A subtle row of notable client or partner logos providing additional social proof without overwhelming the section</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05: Walk in the Light -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">05</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Walk in the Light</h3>
+                            <span class="page-section-type">Closing Statement</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The final section brings the brand story full circle by returning to the tagline "Walk in the Light." After learning who Flare is, where they came from, how they craft their products, and what they've achieved, the visitor arrives at an emotional resolution. The tagline is no longer just words -it carries the weight of everything the visitor has just read. The design is intentionally minimal: maximum whitespace, the tagline as the centerpiece in bold typography, a supporting line that connects craftsmanship to the visitor's experience, and clear calls-to-action that channel the narrative momentum into a next step. This mirrors the Reveal concept from the homepage, creating a bookend effect across the entire site.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Tagline Display:</strong> "Walk in the Light" in large Cairo Black weight typography -the focal point of the entire section, given room to breathe</li>
+                                <li><strong>Supporting Line:</strong> A single sentence connecting the brand story to the visitor (e.g. "Every space deserves to be seen. Let us show you what locally crafted light can do.")</li>
+                                <li><strong>Primary CTA:</strong> "Explore Our Products" -filled button in orange, directing visitors to the product catalog</li>
+                                <li><strong>Secondary CTA:</strong> "Get in Touch" -outlined button with gradient border animation, for visitors ready to start a conversation</li>
+                                <li><strong>Visual Treatment:</strong> Clean white background, generous whitespace on all sides -this section is about resonance, not information density</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 06: PRODUCTS PAGE - DETAILED BREAKDOWN
+             ============================================ -->
+        <section class="products-breakdown-section section" id="products-breakdown">
+            <div class="products-breakdown-container">
+                <!-- Section Header -->
+                <div class="products-breakdown-header">
+                    <div class="products-breakdown-label">Section 06</div>
+                    <h2 class="products-breakdown-title">Products Page - Detailed Breakdown</h2>
+                    <p class="products-breakdown-subtitle">The commercial core of the website -where the catalog comes to life through interactive product showcase.</p>
+                </div>
+
+                <!-- 01: Products Showcase Video -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">01</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Products Showcase Video</h3>
+                            <span class="page-section-type">Visual Preview</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Before breaking down individual components, this video sets the stage for the entire products page experience. It demonstrates the full light/dark toggle interaction in motion -products displayed on a clean, light background, then a toggle switches the page to dark and every product illuminates, revealing the light it produces. This video is the pitch: one look and the concept is immediately understood. It establishes why a lighting company's product page should be fundamentally different from any other catalog.</p>
+                        </div>
+
+                        <!-- Video Preview -->
+                        <div class="video-preview-container">
+                            <div class="video-preview-wrapper">
+                                <video src="products.mp4" autoplay loop muted playsinline></video>
+                            </div>
+                            <p class="video-caption">Products page concept -light/dark toggle bringing the catalog to life. Each product carries two photographs: lights off and lights on.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02: Light/Dark Toggle -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">02</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Light/Dark Toggle</h3>
+                            <span class="page-section-type">Interactive Feature</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>This is the signature interaction of the products page and the most memorable feature of the entire website. Every product in the catalog has two photographs -one with the lights off (product displayed on a clean, light background showing form and design), and one with the lights on (dark background, product illuminated, showing the actual light output). A single toggle switch at the top of the page swaps every product image simultaneously, transforming the entire catalog from a static showcase into a living preview. This interaction is uniquely suited to a lighting company -no other product category can demonstrate its function this dramatically. It transforms browsing into experiencing, and turns the product page from a catalog into a showroom.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Toggle Switch:</strong> A prominent, well-designed toggle positioned at the top of the product grid -clearly labeled (e.g. "Lights Off / Lights On") so the interaction is immediately discoverable</li>
+                                <li><strong>Light Mode (Default):</strong> Clean, bright catalog view -products photographed on a light background with lights off, emphasis on form, materials, and design details</li>
+                                <li><strong>Dark Mode (Toggled):</strong> The page background transitions to dark, all product images swap to their illuminated versions -products come alive, showing the actual light they produce, beam angles, and warm glow</li>
+                                <li><strong>Dual Photography:</strong> Each product requires 2 high-quality photographs -this is the production requirement that makes the feature work. One neutral (lights off), one dramatic (lights on)</li>
+                                <li><strong>Smooth Transition:</strong> The background and images crossfade simultaneously -no jarring swap, but a smooth transition that feels like dimming the lights in a real showroom</li>
+                                <li><strong>Persistent State:</strong> The toggle state persists as the user scrolls and filters -once they switch to dark mode, all products remain illuminated until toggled back</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03: Filter System -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">03</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Filter System</h3>
+                            <span class="page-section-type">Navigation & Discovery</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>With a diverse product catalog spanning multiple categories, the filter system is essential for helping visitors find exactly what they need without friction. The filter bar sits above the product grid and provides quick, intuitive category-based navigation. The design prioritizes speed and clarity -a single click narrows the catalog to a specific category, with smooth animations as products filter in and out. The filter works seamlessly with the light/dark toggle, so users can browse any category in either mode.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Filter Bar:</strong> Horizontal row of category pills/tabs positioned directly above the product grid -always visible, never hidden behind a dropdown</li>
+                                <li><strong>Categories:</strong> Product categories relevant to the catalog (e.g. All, Indoor, Outdoor, Decorative, Commercial, Architectural) -should be customizable as the catalog evolves</li>
+                                <li><strong>Active State:</strong> Selected category highlighted with orange accent (filled background or underline) -clear visual indicator of current filter</li>
+                                <li><strong>Default View:</strong> "All Products" selected by default, showing the complete catalog on first load</li>
+                                <li><strong>Transition Animation:</strong> Products animate in/out when filtering -smooth fade or slide transitions, not an abrupt show/hide</li>
+                                <li><strong>Product Count:</strong> Optional count badge next to each category showing number of products available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04: Product Card -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">04</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Product Card</h3>
+                            <span class="page-section-type">Component Design</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The product card is the repeating unit of the entire catalog -it must be clean, informative, and consistent with the brand's premium positioning. Each card carries two images (for the light/dark toggle), the product name, a category tag, and a brief description. The card design uses sharp edges and minimal ornamentation, letting the product photography do the heavy lifting. Hover interactions add a layer of polish, signaling interactivity without clutter. The card links to a dedicated product detail page for visitors who want to explore further.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Product Image:</strong> Primary visual -switches between light and dark photographs based on the toggle state. Clean crop, consistent aspect ratio across all products</li>
+                                <li><strong>Product Name:</strong> Bold, clear typography (Cairo Bold) -the product's identifier, prominent but not oversized</li>
+                                <li><strong>Category Tag:</strong> Small label indicating the product category (e.g. "Indoor" or "Decorative") -styled as a subtle badge with orange text</li>
+                                <li><strong>Brief Description:</strong> 1-2 lines describing the product's key feature or application -keeps the card informative without overcrowding</li>
+                                <li><strong>Hover Interaction:</strong> Subtle shadow lift or scale effect on hover -signals the card is clickable and adds a tactile feel to browsing</li>
+                                <li><strong>Card Design:</strong> Sharp edges (no border-radius), clean border or borderless with subtle shadow, consistent with the brand's modern minimalist aesthetic</li>
+                                <li><strong>Link to Detail:</strong> Entire card is clickable, leading to a full product detail page with specifications, gallery, and ordering information</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 07: PROJECTS PAGE - DETAILED BREAKDOWN
+             ============================================ -->
+        <section class="projects-breakdown-section section" id="projects-breakdown">
+            <div class="projects-breakdown-container">
+                <!-- Section Header -->
+                <div class="projects-breakdown-header">
+                    <div class="projects-breakdown-label">Section 07</div>
+                    <h2 class="projects-breakdown-title">Projects Page - Detailed Breakdown</h2>
+                    <p class="projects-breakdown-subtitle">Showcasing completed work as proof of Flare Lighting's expertise -real spaces, real impact.</p>
+                </div>
+
+                <!-- 01: Project Gallery -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">01</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Project Gallery</h3>
+                            <span class="page-section-type">Portfolio Overview</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The Projects page is Flare Lighting's visual portfolio -the proof that premium manufacturing translates into real-world results. The gallery serves as the first impression: a curated grid of completed projects that immediately communicates scale, diversity, and quality. Each project thumbnail is a gateway into a detailed case study, but the gallery itself must be compelling enough to make visitors want to explore further. The layout uses a masonry-style or uniform grid with high-impact photography, filterable by project type so visitors can quickly find work relevant to their own needs.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Gallery Grid:</strong> Masonry or uniform grid of project thumbnails -each image is a completed installation showcasing Flare products in context</li>
+                                <li><strong>Project Thumbnail:</strong> High-quality, desaturated photography per brand guidelines -each thumbnail shows the project name and location on hover</li>
+                                <li><strong>Category Filter:</strong> Horizontal filter bar (same pattern as Products page) -categories like Commercial, Residential, Hospitality, Retail, Architectural</li>
+                                <li><strong>Project Count:</strong> Total number of projects displayed, updating as filters are applied</li>
+                                <li><strong>Load More / Pagination:</strong> If the portfolio grows large, progressive loading keeps the initial page lightweight</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02: Project Detail Page -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">02</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Project Detail</h3>
+                            <span class="page-section-type">Case Study Layout</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Each project deserves its own story. The detail page transforms a single project from a thumbnail into a full case study -the challenge, the lighting solution, and the result. This is where Flare demonstrates its consultative expertise, not just its products. Visitors should leave a project detail page understanding both what was installed and why those specific lighting choices were made. The layout combines an immersive image gallery with structured project information, creating a narrative that doubles as a sales tool for similar prospects.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Hero Image:</strong> Full-width banner showing the signature shot of the completed project -the most dramatic or representative angle</li>
+                                <li><strong>Project Info Bar:</strong> Key details at a glance -project name, location, category, year completed, and products used</li>
+                                <li><strong>Image Gallery:</strong> Multiple photographs showing different angles, details, and lighting conditions -scrollable or grid layout</li>
+                                <li><strong>Project Description:</strong> 2-3 paragraphs covering the brief, the lighting approach, and the outcome -written as a narrative, not a spec sheet</li>
+                                <li><strong>Products Used:</strong> A linked list or grid of Flare products featured in the project -each linking back to the Products page for cross-selling</li>
+                                <li><strong>Before/After (Optional):</strong> Comparison slider or side-by-side showing the space before and after Flare's lighting installation</li>
+                                <li><strong>Navigation:</strong> Previous/Next project links for easy browsing between case studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03: Project Card -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">03</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Project Card</h3>
+                            <span class="page-section-type">Component Design</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The project card is the repeating unit of the gallery -each card must communicate the scale and quality of a project in a single glance. The design prioritizes photography above all, with project information appearing as an overlay on hover. This keeps the gallery visually clean while still being informative. The card links to the full project detail page, and the hover state creates an interactive browsing experience that rewards exploration.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Project Image:</strong> Primary visual filling the entire card -high-quality installation photography, desaturated per brand guidelines</li>
+                                <li><strong>Hover Overlay:</strong> Dark gradient overlay appearing on hover, revealing project name, location, and category -text in white for contrast</li>
+                                <li><strong>Category Badge:</strong> Small orange badge indicating project type (e.g. "Commercial" or "Residential") -visible on hover</li>
+                                <li><strong>Card Design:</strong> Sharp edges, no border-radius -image bleeds to the edge of the card for maximum visual impact</li>
+                                <li><strong>Hover Animation:</strong> Subtle image scale (1.02-1.05x) with overlay fade-in -smooth, premium feel</li>
+                                <li><strong>Click Target:</strong> Entire card is clickable, navigating to the full project detail page</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 08: CONTACT US PAGE - DETAILED BREAKDOWN
+             ============================================ -->
+        <section class="contact-breakdown-section section" id="contact-breakdown">
+            <div class="contact-breakdown-container">
+                <!-- Section Header -->
+                <div class="contact-breakdown-header">
+                    <div class="contact-breakdown-label">Section 08</div>
+                    <h2 class="contact-breakdown-title">Contact Us Page - Detailed Breakdown</h2>
+                    <p class="contact-breakdown-subtitle">The conversion point -making it effortless for visitors to start a conversation with Flare Lighting.</p>
+                </div>
+
+                <!-- 01: Contact Hero -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">01</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Contact Hero</h3>
+                            <span class="page-section-type">Opening Statement</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The Contact page should not feel like an afterthought -it's a conversion point. The hero section sets a welcoming, professional tone that encourages visitors to reach out. A clear headline communicates that Flare Lighting values every inquiry, whether it's a large commercial project or a single residential consultation. The design balances warmth with professionalism, making the visitor feel confident that their message will be met with expertise and care.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Headline:</strong> An inviting, action-oriented heading (e.g. "Let's Light Your Space" or "Start a Conversation") -warm but professional</li>
+                                <li><strong>Subtext:</strong> A brief line setting expectations (e.g. "Whether it's a new project or a product inquiry, our team is ready to help")</li>
+                                <li><strong>Visual Treatment:</strong> Clean, minimal -generous whitespace, possibly a subtle background image or gradient accent</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02: Contact Form -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">02</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Contact Form</h3>
+                            <span class="page-section-type">Primary Conversion</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>The contact form is the primary conversion mechanism -it must be simple enough to encourage submissions while gathering enough information to qualify leads. The form design follows the brand's minimalist aesthetic with clean input fields, clear labels, and a prominent submit button. The form should feel effortless, not like paperwork. Every field earns its place by providing value to both the visitor and the Flare team.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Form Fields:</strong> Name, email, phone (optional), inquiry type dropdown (Product Inquiry, Project Consultation, General Question, Partnership), and message textarea</li>
+                                <li><strong>Input Design:</strong> Clean, minimal input fields with bottom-border style or subtle outlined boxes -sharp edges consistent with brand</li>
+                                <li><strong>Submit Button:</strong> Prominent orange CTA button with gradient border animation on hover (consistent with button pattern established in cursor.html)</li>
+                                <li><strong>Validation:</strong> Inline validation with clear error states -orange accent for required field indicators</li>
+                                <li><strong>Success State:</strong> Clear confirmation message after submission -reassuring the visitor their message has been received</li>
+                                <li><strong>Layout:</strong> Two-column grid for name/email fields, full-width for message -compact but not cramped</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03: Contact Information -->
+                <div class="page-section-block">
+                    <div class="page-section-header">
+                        <div class="page-section-number">03</div>
+                        <div class="page-section-title-group">
+                            <h3 class="page-section-name">Contact Information</h3>
+                            <span class="page-section-type">Direct Channels</span>
+                        </div>
+                    </div>
+
+                    <div class="page-section-content">
+                        <div class="section-strategy">
+                            <h4>Strategic Intent</h4>
+                            <p>Not everyone wants to fill out a form -some visitors prefer a direct phone call, email, or in-person visit. The contact information section provides all direct channels clearly and accessibly, positioned alongside or below the form. For a local manufacturer, the physical address and showroom location are particularly important, as they reinforce the "local" positioning and invite visitors to experience products in person. A map integration makes finding the location effortless.</p>
+                        </div>
+
+                        <div class="section-elements">
+                            <h4>Key Elements</h4>
+                            <ul class="elements-list">
+                                <li><strong>Phone Number:</strong> Clickable tel: link for mobile users -prominently displayed with a phone icon</li>
+                                <li><strong>Email Address:</strong> Clickable mailto: link -for visitors who prefer email communication</li>
+                                <li><strong>Physical Address:</strong> Full showroom/factory address -reinforces local manufacturing identity and invites in-person visits</li>
+                                <li><strong>Business Hours:</strong> Clear operating hours so visitors know when to expect a response or visit</li>
+                                <li><strong>Map Integration:</strong> Embedded map showing the exact location -making it easy for visitors to plan a visit to the showroom or factory</li>
+                                <li><strong>Social Links:</strong> Icons linking to Flare's social media profiles -additional touchpoints for engagement</li>
                             </ul>
                         </div>
                     </div>
